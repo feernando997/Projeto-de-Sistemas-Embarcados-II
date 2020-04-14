@@ -7,3 +7,6 @@ C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\ControleDeSenha
 C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\ControleDeSenhas\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.exe
 C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\ControleDeSenhas\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.xml
 C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\ControleDeSenhas\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.pdb
+C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.exe
+C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.xml
+C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.pdb

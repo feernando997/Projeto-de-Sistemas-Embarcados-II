@@ -3,7 +3,7 @@ Value=P16F690
 [DeviceClock]
 Value=4
 [MainUnit]
-Value=SistemaDeContagemMercado.pbas
+Value=Pic1.pbas
 [DeviceFlags]
 Count=10
 Value0=_FCMEN_OFF = $37FF
@@ -29,6 +29,6 @@ Value=0
 Count=3
 Value0=C:\Program Files (x86)\Mikroelektronika\mikroBasic\Defs\
 Value1=C:\Program Files (x86)\Mikroelektronika\mikroBasic\Uses\p16\
-Value2=D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\codigo\
+Value2=D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-Sistemas-Embarcados-II\codigo pics\
 [EEPROMinfo]
 isused=0

@@ -1,0 +1,16 @@
+program SistemaDeContagemMercado
+
+inicio:
+TRISA=%11111111
+TRISB=%11111111
+TRISC=%00000000
+INTCON=%00000000
+ANSEL=%00000000
+ANSELH=%00000000
+
+Usart_Init(9600)
+
+executa:
+
+        goto executa
+end.

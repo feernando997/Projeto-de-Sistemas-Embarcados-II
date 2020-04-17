@@ -1,0 +1,17 @@
+program Pic2
+
+inicio:
+
+TRISA=%11011111
+TRISB=%01111111
+TRISC=%00000000
+INTCON=%00000000
+ANSEL=%00000000
+ANSELH=%00000000
+
+executa:
+
+
+
+        goto executa
+end.

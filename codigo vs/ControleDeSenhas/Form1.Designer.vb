@@ -24,6 +24,8 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnDecrPriorit = New System.Windows.Forms.Button()
+        Me.btnDecrNormal = New System.Windows.Forms.Button()
         Me.btnRepetir = New System.Windows.Forms.Button()
         Me.btnIncPrioritario = New System.Windows.Forms.Button()
         Me.btnIncrementar = New System.Windows.Forms.Button()
@@ -32,11 +34,15 @@ Partial Class Form1
         Me.btnResetPr = New System.Windows.Forms.Button()
         Me.btnReset = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.btnCopiaSenhaP = New System.Windows.Forms.Button()
+        Me.btnCopiaSenhaN = New System.Windows.Forms.Button()
         Me.lblSenhaP = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblSenhaN = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.btnP0 = New System.Windows.Forms.Button()
+        Me.btnN0 = New System.Windows.Forms.Button()
         Me.btnApagaTextoP = New System.Windows.Forms.Button()
         Me.btnApagaTextoN = New System.Windows.Forms.Button()
         Me.btnPAtt = New System.Windows.Forms.Button()
@@ -72,12 +78,10 @@ Partial Class Form1
         Me.lblAtualizaSenhaN = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.btnDecrNormal = New System.Windows.Forms.Button()
-        Me.btnDecrPriorit = New System.Windows.Forms.Button()
-        Me.btnN0 = New System.Windows.Forms.Button()
-        Me.btnP0 = New System.Windows.Forms.Button()
-        Me.btnCopiaSenhaN = New System.Windows.Forms.Button()
-        Me.btnCopiaSenhaP = New System.Windows.Forms.Button()
+        Me.SerialPort2 = New System.IO.Ports.SerialPort(Me.components)
+        Me.txtMensagem = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -98,6 +102,24 @@ Partial Class Form1
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Incrementos"
+        '
+        'btnDecrPriorit
+        '
+        Me.btnDecrPriorit.Location = New System.Drawing.Point(87, 48)
+        Me.btnDecrPriorit.Name = "btnDecrPriorit"
+        Me.btnDecrPriorit.Size = New System.Drawing.Size(123, 23)
+        Me.btnDecrPriorit.TabIndex = 6
+        Me.btnDecrPriorit.Text = "Decrementar prioritario"
+        Me.btnDecrPriorit.UseVisualStyleBackColor = True
+        '
+        'btnDecrNormal
+        '
+        Me.btnDecrNormal.Location = New System.Drawing.Point(6, 48)
+        Me.btnDecrNormal.Name = "btnDecrNormal"
+        Me.btnDecrNormal.Size = New System.Drawing.Size(81, 23)
+        Me.btnDecrNormal.TabIndex = 5
+        Me.btnDecrNormal.Text = "Decrementar"
+        Me.btnDecrNormal.UseVisualStyleBackColor = True
         '
         'btnRepetir
         '
@@ -180,6 +202,24 @@ Partial Class Form1
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Senhas"
         '
+        'btnCopiaSenhaP
+        '
+        Me.btnCopiaSenhaP.Location = New System.Drawing.Point(201, 161)
+        Me.btnCopiaSenhaP.Name = "btnCopiaSenhaP"
+        Me.btnCopiaSenhaP.Size = New System.Drawing.Size(75, 23)
+        Me.btnCopiaSenhaP.TabIndex = 5
+        Me.btnCopiaSenhaP.Text = "<<<<<<<<<"
+        Me.btnCopiaSenhaP.UseVisualStyleBackColor = True
+        '
+        'btnCopiaSenhaN
+        '
+        Me.btnCopiaSenhaN.Location = New System.Drawing.Point(35, 161)
+        Me.btnCopiaSenhaN.Name = "btnCopiaSenhaN"
+        Me.btnCopiaSenhaN.Size = New System.Drawing.Size(75, 23)
+        Me.btnCopiaSenhaN.TabIndex = 4
+        Me.btnCopiaSenhaN.Text = "<<<<<<<<<"
+        Me.btnCopiaSenhaN.UseVisualStyleBackColor = True
+        '
         'lblSenhaP
         '
         Me.lblSenhaP.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -252,6 +292,24 @@ Partial Class Form1
         Me.GroupBox4.TabIndex = 3
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Atualizar valor"
+        '
+        'btnP0
+        '
+        Me.btnP0.Location = New System.Drawing.Point(183, 150)
+        Me.btnP0.Name = "btnP0"
+        Me.btnP0.Size = New System.Drawing.Size(22, 23)
+        Me.btnP0.TabIndex = 27
+        Me.btnP0.Text = "0"
+        Me.btnP0.UseVisualStyleBackColor = True
+        '
+        'btnN0
+        '
+        Me.btnN0.Location = New System.Drawing.Point(67, 149)
+        Me.btnN0.Name = "btnN0"
+        Me.btnN0.Size = New System.Drawing.Size(23, 23)
+        Me.btnN0.TabIndex = 26
+        Me.btnN0.Text = "0"
+        Me.btnN0.UseVisualStyleBackColor = True
         '
         'btnApagaTextoP
         '
@@ -487,7 +545,7 @@ Partial Class Form1
         '
         'SerialPort1
         '
-        Me.SerialPort1.PortName = "COM4"
+        Me.SerialPort1.PortName = "COM3"
         '
         'Timer1
         '
@@ -518,7 +576,7 @@ Partial Class Form1
         '
         'btnEnviaSenhaN
         '
-        Me.btnEnviaSenhaN.Location = New System.Drawing.Point(12, 67)
+        Me.btnEnviaSenhaN.Location = New System.Drawing.Point(15, 66)
         Me.btnEnviaSenhaN.Name = "btnEnviaSenhaN"
         Me.btnEnviaSenhaN.Size = New System.Drawing.Size(75, 23)
         Me.btnEnviaSenhaN.TabIndex = 4
@@ -565,65 +623,33 @@ Partial Class Form1
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "NORMAL"
         '
-        'btnDecrNormal
+        'SerialPort2
         '
-        Me.btnDecrNormal.Location = New System.Drawing.Point(6, 48)
-        Me.btnDecrNormal.Name = "btnDecrNormal"
-        Me.btnDecrNormal.Size = New System.Drawing.Size(81, 23)
-        Me.btnDecrNormal.TabIndex = 5
-        Me.btnDecrNormal.Text = "Decrementar"
-        Me.btnDecrNormal.UseVisualStyleBackColor = True
+        Me.SerialPort2.PortName = "COM4"
         '
-        'btnDecrPriorit
+        'txtMensagem
         '
-        Me.btnDecrPriorit.Location = New System.Drawing.Point(87, 48)
-        Me.btnDecrPriorit.Name = "btnDecrPriorit"
-        Me.btnDecrPriorit.Size = New System.Drawing.Size(123, 23)
-        Me.btnDecrPriorit.TabIndex = 6
-        Me.btnDecrPriorit.Text = "Decrementar prioritario"
-        Me.btnDecrPriorit.UseVisualStyleBackColor = True
+        Me.txtMensagem.Location = New System.Drawing.Point(325, 386)
+        Me.txtMensagem.Name = "txtMensagem"
+        Me.txtMensagem.Size = New System.Drawing.Size(215, 20)
+        Me.txtMensagem.TabIndex = 5
         '
-        'btnN0
+        'Label5
         '
-        Me.btnN0.Location = New System.Drawing.Point(67, 149)
-        Me.btnN0.Name = "btnN0"
-        Me.btnN0.Size = New System.Drawing.Size(23, 23)
-        Me.btnN0.TabIndex = 26
-        Me.btnN0.Text = "0"
-        Me.btnN0.UseVisualStyleBackColor = True
-        '
-        'btnP0
-        '
-        Me.btnP0.Location = New System.Drawing.Point(183, 150)
-        Me.btnP0.Name = "btnP0"
-        Me.btnP0.Size = New System.Drawing.Size(22, 23)
-        Me.btnP0.TabIndex = 27
-        Me.btnP0.Text = "0"
-        Me.btnP0.UseVisualStyleBackColor = True
-        '
-        'btnCopiaSenhaN
-        '
-        Me.btnCopiaSenhaN.Location = New System.Drawing.Point(35, 161)
-        Me.btnCopiaSenhaN.Name = "btnCopiaSenhaN"
-        Me.btnCopiaSenhaN.Size = New System.Drawing.Size(75, 23)
-        Me.btnCopiaSenhaN.TabIndex = 4
-        Me.btnCopiaSenhaN.Text = "<<<<<<<<<"
-        Me.btnCopiaSenhaN.UseVisualStyleBackColor = True
-        '
-        'btnCopiaSenhaP
-        '
-        Me.btnCopiaSenhaP.Location = New System.Drawing.Point(201, 161)
-        Me.btnCopiaSenhaP.Name = "btnCopiaSenhaP"
-        Me.btnCopiaSenhaP.Size = New System.Drawing.Size(75, 23)
-        Me.btnCopiaSenhaP.TabIndex = 5
-        Me.btnCopiaSenhaP.Text = "<<<<<<<<<"
-        Me.btnCopiaSenhaP.UseVisualStyleBackColor = True
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(260, 389)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(59, 13)
+        Me.Label5.TabIndex = 6
+        Me.Label5.Text = "Mensagem"
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(664, 430)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.txtMensagem)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
@@ -639,6 +665,7 @@ Partial Class Form1
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
@@ -696,5 +723,9 @@ Partial Class Form1
     Friend WithEvents btnN0 As System.Windows.Forms.Button
     Friend WithEvents btnCopiaSenhaP As System.Windows.Forms.Button
     Friend WithEvents btnCopiaSenhaN As System.Windows.Forms.Button
+    Friend WithEvents SerialPort2 As System.IO.Ports.SerialPort
+    Friend WithEvents txtMensagem As System.Windows.Forms.TextBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Timer2 As System.Windows.Forms.Timer
 
 End Class

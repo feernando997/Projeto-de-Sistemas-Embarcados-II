@@ -14,9 +14,13 @@
     End Sub
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'If SerialPort1.IsOpen() = False Then
+        'On Error GoTo ErroAbertura
+        'Dim x As Integer
         'SerialPort1.Open()
-        'End If
+        'SerialPort2.Open()
+        'Exit Sub
+        'ErroAbertura:
+        'x = MsgBox("Erro ao abrir a porta serial COM4. Verifique...", MsgBoxStyle.OkOnly, "Erro de Hardware")
     End Sub
 
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
@@ -198,11 +202,18 @@
     End Sub
 
     Private Sub btnEnviaSenhaN_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviaSenhaN.Click
-        lblSenhaN.Text = lblAtualizaSenhaN.Text
+
+        If SerialPort2.IsOpen() = True Then
+            SerialPort2.Write("1" + lblAtualizaSenhaN.Text + "/")
+            lblSenhaN.Text = lblAtualizaSenhaN.Text
+        End If
     End Sub
 
     Private Sub btnEnviaSenhaP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviaSenhaP.Click
-        lblSenhaP.Text = lblAtualizaSenhaP.Text
+        If SerialPort2.IsOpen() = True Then
+            SerialPort2.Write("2" + lblAtualizaSenhaP.Text + "/")
+            lblSenhaP.Text = lblAtualizaSenhaP.Text
+        End If
     End Sub
 
     Private Sub btnApagaTextoP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApagaTextoP.Click

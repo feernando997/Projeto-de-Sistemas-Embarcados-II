@@ -1,16 +1,99 @@
 program Pic1
 
-inicio:
+dim b0, b1, b2, b3, b4, b5, b6, ba5 as boolean
+dim txt  as string[20]
+dim i    as integer
+dim info as byte
+
+
+sub procedure inc
+    Usart_Write_Text("+")
+    Usart_Write_Text("/")
+end sub
+
+sub procedure dec
+    Usart_Write_Text("-")
+    Usart_Write_Text("/")
+end sub
+
+main:
 TRISA=%11111111
-TRISB=%11111111
+TRISB=%01111111
 TRISC=%00000000
 INTCON=%00000000
 ANSEL=%00000000
 ANSELH=%00000000
 
 Usart_Init(9600)
+PORTC=0
+i=0
+b0=false
+b1=false
+b2=false
+b3=false
+b4=false
+b5=false
+b6=false
 
 executa:
+        if USART_Data_Ready() > 0 then
+           info = USART_Read()
+
+        end if
+
+       'Incrementa
+        if testbit(portA,0) = 1 then
+           if b0 = false then
+              b0 = true
+              i = i + 1
+           end if
+        end if
+        if testbit(portA,0) = 0 then
+           if b0 = true then
+              b0 = false
+           end if
+        end if
+        
+       'Decrementa
+        if testbit(portA,1) = 1 then
+           if b1 = false then
+              b1 = true
+              i = i - 1
+
+           end if
+        end if
+        if testbit(portA,1) = 0 then
+           if b1 = true then
+              b1 = false
+           end if
+        end if
+        
+       'Envia
+        if testbit(portA,5) = 1 then
+           if b5 = false then
+              b5 = true
+              if ba5 = true then
+                 ba5 = false
+              else
+                 ba5 = true
+              end if
+           end if
+        end if
+        if testbit(portA,5) = 0 then
+           b5 = false
+        end if
+
+        if ((ba5 = true) or (ba5 = true)) then
+
+        else
+
+        end if
+        
+        if i > 999 then
+           i = 0
+        end if
+        
+        info = 0
 
         goto executa
 end.

@@ -22,10 +22,10 @@ SimDebug=0
 [ProjectFiles]
 Count=0
 [OtherFiles]
-Count=0
-Value0=C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\ResolucaoExercicios\Condominio - Temperatura\Hardware\RESIDENCIA1.pbas
-Value1=C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\ResolucaoExercicios\Condominio - Temperatura\Hardware\RESIDENCIA4.pbas
-Value2=C:\Users\pedro\Downloads\PROJ_VALV_COM_DISPLAYS\MCU2.pbas
+Count=3
+Value0=C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo pics\Pic2.pbas
+Value1=C:\Users\pedro\Downloads\PROJ_VALV_COM_DISPLAYS\MCU2.pbas
+Value2=C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\ResolucaoExercicios\Condominio - Temperatura\Hardware\RESIDENCIA4.pbas
 [TabIndex]
 Value=0
 [SearchPath]

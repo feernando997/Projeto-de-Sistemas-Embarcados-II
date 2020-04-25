@@ -14,13 +14,13 @@
     End Sub
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'On Error GoTo ErroAbertura
-        'Dim x As Integer
+        On Error GoTo ErroAbertura
+        Dim x As Integer
         'SerialPort1.Open()
-        'SerialPort2.Open()
-        'Exit Sub
-        'ErroAbertura:
-        'x = MsgBox("Erro ao abrir a porta serial COM4. Verifique...", MsgBoxStyle.OkOnly, "Erro de Hardware")
+        SerialPort2.Open()
+        Exit Sub
+ErroAbertura:
+        x = MsgBox("Erro ao abrir a porta serial COM4. Verifique...", MsgBoxStyle.OkOnly, "Erro de Hardware")
     End Sub
 
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
@@ -204,14 +204,37 @@
     Private Sub btnEnviaSenhaN_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviaSenhaN.Click
 
         If SerialPort2.IsOpen() = True Then
-            SerialPort2.Write("1" + lblAtualizaSenhaN.Text + "/")
+
+            If lblAtualizaSenhaN.Text.Length = 1 Then
+                SerialPort2.Write("100" + lblAtualizaSenhaN.Text + "/")
+            End If
+
+            If lblAtualizaSenhaN.Text.Length = 2 Then
+                SerialPort2.Write("10" + lblAtualizaSenhaN.Text + "/")
+            End If
+
+            If lblAtualizaSenhaN.Text.Length = 3 Then
+                SerialPort2.Write("1" + lblAtualizaSenhaN.Text + "/")
+            End If
+
+            txtMensagem.Text = "1" + lblAtualizaSenhaN.Text + "/"
             lblSenhaN.Text = lblAtualizaSenhaN.Text
         End If
     End Sub
 
     Private Sub btnEnviaSenhaP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviaSenhaP.Click
         If SerialPort2.IsOpen() = True Then
-            SerialPort2.Write("2" + lblAtualizaSenhaP.Text + "/")
+            If lblAtualizaSenhaN.Text.Length = 1 Then
+                SerialPort2.Write("200" + lblAtualizaSenhaP.Text + "/")
+            End If
+
+            If lblAtualizaSenhaN.Text.Length = 2 Then
+                SerialPort2.Write("20" + lblAtualizaSenhaP.Text + "/")
+            End If
+
+            If lblAtualizaSenhaN.Text.Length = 3 Then
+                SerialPort2.Write("2" + lblAtualizaSenhaP.Text + "/")
+            End If
             lblSenhaP.Text = lblAtualizaSenhaP.Text
         End If
     End Sub

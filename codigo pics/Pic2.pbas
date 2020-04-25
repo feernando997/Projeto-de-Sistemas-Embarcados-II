@@ -9,12 +9,13 @@ dim tipo  as integer
 
 main:
 
-TRISA=%11011111
-TRISB=%01111111
+TRISA=%11010000
+TRISB=%01101111
 TRISC=%00000000
 INTCON=%00000000
 ANSEL=%00000000
 ANSELH=%00000000
+
 
 portc = 0
 senha = 0
@@ -26,7 +27,7 @@ USART_INIT(9600)
 
 executa:
 
-        if USART_Data_Ready > 0 then
+'        if USART_Data_Ready > 0 then
            Usart_Read_Text(recebe,"/")
 
            senha = StrToInt(recebe)
@@ -35,23 +36,21 @@ executa:
               cent = senha div 100 - (tipo * 10)
               dez = senha div 10 - (cent * 10) - (tipo * 100)
               uni = senha - (dez * 10) - (cent * 100) - (tipo * 1000)
-
+              
               portc = uni + 16
-              portc.4 = 1
               delay_ms(5)
-
+              
               portc = dez + 32
-              portc.5 = 1
               delay_ms(5)
 
               portc = cent + 64
-              portc.6 = 1
+              delay_ms(5)
+              
+              portc = 129
               delay_ms(5)
 
-             portc = 129
-             portc.7 = 1
-             delay_ms(5)
-           else
+           end if
+           if tipo = 2 then
               cent = senha div 100 - (tipo * 10)
               dez = senha div 10 - (cent * 10) - (tipo * 100)
               uni = senha - (dez * 10) - (cent * 100) - (tipo * 1000)
@@ -64,12 +63,13 @@ executa:
 
               portc = cent + 64
               delay_ms(5)
-              
-'             portc = 130
-'             delay_ms(5)
+
+              portc = 130
+              delay_ms(5)
            end if
 
-        end if
+'        end if
 
         goto executa
+        
 end.

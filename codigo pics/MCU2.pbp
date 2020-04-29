@@ -3,7 +3,7 @@ Value=P16F690
 [DeviceClock]
 Value=4
 [MainUnit]
-Value=Pic2.pbas
+Value=MCU2.pbas
 [DeviceFlags]
 Count=10
 Value0=_FCMEN_OFF = $37FF
@@ -22,10 +22,7 @@ SimDebug=0
 [ProjectFiles]
 Count=0
 [OtherFiles]
-Count=1
-Value0=C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo pics\Pic2.pbas
-Value1=C:\Users\pedro\Downloads\PROJ_VALV_COM_DISPLAYS\MCU2.pbas
-Value2=C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\ResolucaoExercicios\Condominio - Temperatura\Hardware\RESIDENCIA4.pbas
+Count=0
 [TabIndex]
 Value=0
 [SearchPath]

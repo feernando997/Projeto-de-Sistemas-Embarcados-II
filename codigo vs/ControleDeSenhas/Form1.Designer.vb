@@ -82,6 +82,8 @@ Partial Class Form1
         Me.txtMensagem = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtMsgRecebida = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -549,6 +551,7 @@ Partial Class Form1
         '
         'Timer1
         '
+        Me.Timer1.Enabled = True
         '
         'GroupBox5
         '
@@ -629,7 +632,7 @@ Partial Class Form1
         '
         'txtMensagem
         '
-        Me.txtMensagem.Location = New System.Drawing.Point(325, 386)
+        Me.txtMensagem.Location = New System.Drawing.Point(325, 365)
         Me.txtMensagem.Name = "txtMensagem"
         Me.txtMensagem.Size = New System.Drawing.Size(215, 20)
         Me.txtMensagem.TabIndex = 5
@@ -637,17 +640,35 @@ Partial Class Form1
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(260, 389)
+        Me.Label5.Location = New System.Drawing.Point(260, 368)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(59, 13)
         Me.Label5.TabIndex = 6
         Me.Label5.Text = "Mensagem"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(243, 396)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(76, 13)
+        Me.Label8.TabIndex = 7
+        Me.Label8.Text = "Msg Recebida"
+        '
+        'txtMsgRecebida
+        '
+        Me.txtMsgRecebida.Location = New System.Drawing.Point(325, 393)
+        Me.txtMsgRecebida.Name = "txtMsgRecebida"
+        Me.txtMsgRecebida.Size = New System.Drawing.Size(215, 20)
+        Me.txtMsgRecebida.TabIndex = 8
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(664, 430)
+        Me.Controls.Add(Me.txtMsgRecebida)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txtMensagem)
         Me.Controls.Add(Me.GroupBox5)
@@ -656,7 +677,6 @@ Partial Class Form1
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "Form1"
-        Me.Text = "Controle de senha"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
@@ -727,5 +747,7 @@ Partial Class Form1
     Friend WithEvents txtMensagem As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Timer2 As System.Windows.Forms.Timer
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents txtMsgRecebida As System.Windows.Forms.TextBox
 
 End Class

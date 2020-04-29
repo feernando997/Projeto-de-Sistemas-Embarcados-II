@@ -16,7 +16,7 @@
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         On Error GoTo ErroAbertura
         Dim x As Integer
-        'SerialPort1.Open()
+        SerialPort1.Open()
         SerialPort2.Open()
         Exit Sub
 ErroAbertura:
@@ -24,9 +24,14 @@ ErroAbertura:
     End Sub
 
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
-        If SerialPort1.IsOpen() = True Then
+        On Error GoTo saidaTimer
+        Dim x As Integer
 
-        End If
+        txtMsgRecebida.Text = ""
+        txtMsgRecebida.Text = SerialPort1.ReadExisting
+        Exit Sub
+saidaTimer:
+        x = MsgBox("Erro ao ler porta COM3", MsgBoxStyle.OkOnly, "Erro de Hardware")
     End Sub
 
     Private Sub btnIncPrioritario_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnIncPrioritario.Click
@@ -224,17 +229,19 @@ ErroAbertura:
 
     Private Sub btnEnviaSenhaP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviaSenhaP.Click
         If SerialPort2.IsOpen() = True Then
-            If lblAtualizaSenhaN.Text.Length = 1 Then
+            If lblAtualizaSenhaP.Text.Length = 1 Then
                 SerialPort2.Write("200" + lblAtualizaSenhaP.Text + "/")
             End If
 
-            If lblAtualizaSenhaN.Text.Length = 2 Then
+            If lblAtualizaSenhaP.Text.Length = 2 Then
                 SerialPort2.Write("20" + lblAtualizaSenhaP.Text + "/")
             End If
 
-            If lblAtualizaSenhaN.Text.Length = 3 Then
+            If lblAtualizaSenhaP.Text.Length = 3 Then
                 SerialPort2.Write("2" + lblAtualizaSenhaP.Text + "/")
             End If
+
+            txtMensagem.Text = "2" + lblAtualizaSenhaP.Text + "/"
             lblSenhaP.Text = lblAtualizaSenhaP.Text
         End If
     End Sub

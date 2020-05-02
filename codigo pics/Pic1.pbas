@@ -1,10 +1,17 @@
 program Pic1
 
-dim b0, b1, b2, b3, b4, b5, b6, ba0, ba1, ba2, ba3, ba4, ba5  as boolean
-dim txt  as string[20]
+dim b0, b1, b2, b3, b4, b5, b6 as boolean
+dim txt  as string[6]
+dim rcbtxt as string[20]
 dim i    as integer
 dim info as byte
-dim atualiza as boolean
+
+sub procedure envia
+    Usart_Write_Text("P1")
+    intToStr(i, txt)
+    Usart_Write_Text(txt)
+    'Usart_Write_Text("/")
+end sub
 
 main:
 TRISA=%11111111
@@ -24,20 +31,10 @@ b3=false
 b4=false
 b5=false
 b6=false
-ba0=false
-ba1=false
-ba2=false
-ba3=false
-ba4=false
-ba5=false
-atualiza=false
 
 executa:
         if USART_Data_Ready() > 0 then
-           info = USART_Read()
-           if (info = 65) then 'A
-              atualiza = true
-           end if
+           Usart_Read_Text(txt, "/")
         end if
 
        'Incrementa
@@ -66,11 +63,11 @@ executa:
            end if
         end if
         
-        'Reset
+        'Reseta
         if testbit(portA,2) = 1 then
            if b2 = false then
               b2 = true
-              i = i - 1
+              i = 0
            end if
         end if
         if testbit(portA,2) = 0 then
@@ -83,24 +80,15 @@ executa:
         if testbit(portA,5) = 1 then
            if b3 = false then
               b3 = true
-              if ba3 = true then
-                 ba3 = false
-              else
-                 ba3 = true
-              end if
+              envia
            end if
         end if
-        
         if testbit(portA,5) = 0 then
            b3 = false
         end if
-        if (ba3 = true) or (atualiza = true) then
-           IntToStr(i, txt)
-           Usart_Write_Text(txt)
-        end if
         
-        if (i > 999) then
-           i = 0
+        if i > 999 then
+           i = 999
         end if
         
         info = 0

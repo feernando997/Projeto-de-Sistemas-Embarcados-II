@@ -26,9 +26,33 @@ ErroAbertura:
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
         On Error GoTo saidaTimer
         Dim x As Integer
+        Dim i As Integer
 
-        txtMsgRecebida.Text = ""
-        txtMsgRecebida.Text = SerialPort1.ReadExisting
+        'txtMsgRecebida.Text = ""
+        'txtMsgRecebida.Text = SerialPort1.ReadExisting
+
+        'teste de recebimento do PIC 1
+        If SerialPort1.BytesToRead > 0 Then
+            txtMsgRecebida.Text = ""
+            txtMsgRecebida.Text = SerialPort1.ReadExisting
+            If Len(txtMsgRecebida.Text) > 0 Then
+                If Mid(txtMsgRecebida.Text, 1, 2) = "P1" Then
+                    If Mid(txtMsgRecebida.Text, 8, 1).Length < 9 Then
+                        i = Mid(txtMsgRecebida.Text, 8, 1)
+                        lblAtualizaSenhaN.Text = i
+                    End If
+                    If Mid(txtMsgRecebida.Text, 7, 2).Length > 1 Then
+                        i = Mid(txtMsgRecebida.Text, 7, 1) + Mid(txtMsgRecebida.Text, 8, 2)
+                        lblAtualizaSenhaN.Text = i
+                    End If
+                    If Mid(txtMsgRecebida.Text, 6, 3).Length > 2 Then
+                        i = Mid(txtMsgRecebida.Text, 6, 1) + Mid(txtMsgRecebida.Text, 7, 1) + Mid(txtMsgRecebida.Text, 8, 1)
+                        lblAtualizaSenhaN.Text = i
+                    End If
+                End If
+            End If
+        End If
+
         Exit Sub
 saidaTimer:
         x = MsgBox("Erro ao ler porta COM3", MsgBoxStyle.OkOnly, "Erro de Hardware")

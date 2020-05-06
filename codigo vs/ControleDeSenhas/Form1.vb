@@ -28,27 +28,19 @@ ErroAbertura:
         Dim x As Integer
         Dim i As Integer
 
-        'txtMsgRecebida.Text = ""
-        'txtMsgRecebida.Text = SerialPort1.ReadExisting
 
         'teste de recebimento do PIC 1
         If SerialPort1.BytesToRead > 0 Then
             txtMsgRecebida.Text = ""
             txtMsgRecebida.Text = SerialPort1.ReadExisting
             If Len(txtMsgRecebida.Text) > 0 Then
-                If Mid(txtMsgRecebida.Text, 1, 2) = "P1" Then
-                    If Mid(txtMsgRecebida.Text, 8, 1).Length < 9 Then
-                        i = Mid(txtMsgRecebida.Text, 8, 1)
-                        lblAtualizaSenhaN.Text = i
-                    End If
-                    If Mid(txtMsgRecebida.Text, 7, 2).Length > 1 Then
-                        i = Mid(txtMsgRecebida.Text, 7, 1) + Mid(txtMsgRecebida.Text, 8, 2)
-                        lblAtualizaSenhaN.Text = i
-                    End If
-                    If Mid(txtMsgRecebida.Text, 6, 3).Length > 2 Then
-                        i = Mid(txtMsgRecebida.Text, 6, 1) + Mid(txtMsgRecebida.Text, 7, 1) + Mid(txtMsgRecebida.Text, 8, 1)
-                        lblAtualizaSenhaN.Text = i
-                    End If
+                If Mid(txtMsgRecebida.Text, 1, 1) = "1" Then
+                    i = Mid(txtMsgRecebida.Text, 5, 3)
+                    lblSenhaN.Text = i                    
+                End If
+                If Mid(txtMsgRecebida.Text, 1, 1) = "2" Then
+                    i = Mid(txtMsgRecebida.Text, 5, 3)
+                    lblSenhaP.Text = i
                 End If
             End If
         End If
@@ -344,5 +336,33 @@ saidaTimer:
 
     Private Sub btnCopiaSenhaP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCopiaSenhaP.Click
         lblAtualizaSenhaP.Text = lblSenhaP.Text
+    End Sub
+
+    Private Sub EvAtualizaSenhaN(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblSenhaN.TextChanged
+        If SerialPort2.IsOpen() = True Then
+            If lblSenhaN.Text.Length = 1 Then
+                SerialPort2.Write("100" + lblSenhaN.Text + "/")
+            End If
+            If lblSenhaN.Text.Length = 2 Then
+                SerialPort2.Write("10" + lblSenhaN.Text + "/")
+            End If
+            If lblSenhaN.Text.Length = 3 Then
+                SerialPort2.Write("1" + lblSenhaN.Text + "/")
+            End If
+        End If
+    End Sub
+
+    Private Sub EvAtualizarSenhaP(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblSenhaP.TextChanged
+        If SerialPort2.IsOpen() = True Then
+            If lblSenhaP.Text.Length = 1 Then
+                SerialPort2.Write("200" + lblSenhaP.Text + "/")
+            End If
+            If lblSenhaP.Text.Length = 2 Then
+                SerialPort2.Write("20" + lblSenhaP.Text + "/")
+            End If
+            If lblSenhaP.Text.Length = 3 Then
+                SerialPort2.Write("2" + lblSenhaP.Text + "/")
+            End If
+        End If
     End Sub
 End Class

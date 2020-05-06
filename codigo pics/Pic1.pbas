@@ -3,14 +3,27 @@ program Pic1
 dim b0, b1, b2, b3, b4, b5, b6 as boolean
 dim txt  as string[6]
 dim rcbtxt as string[20]
-dim i    as integer
+dim incP as integer
+dim incN as integer
 dim info as byte
 
+dim priorit as integer
+dim tipo as integer
+dim senha as integer
+
 sub procedure envia
-    Usart_Write_Text("P1")
-    intToStr(i, txt)
-    Usart_Write_Text(txt)
-    'Usart_Write_Text("/")
+    if priorit = 1 then
+      intToStr(incN, txt)
+      Usart_Write_Text("1")
+      Usart_Write_Text(txt)
+      Usart_Write_Text("/")
+    end if
+    if priorit = 2 then
+      intToStr(incP, txt)
+      Usart_Write_Text("2")
+      Usart_Write_Text(txt)
+      Usart_Write_Text("/")
+    end if
 end sub
 
 main:
@@ -23,7 +36,8 @@ ANSELH=%00000000
 
 Usart_Init(9600)
 PORTC=0
-i=0
+incP=0
+incN=0
 b0=false
 b1=false
 b2=false
@@ -31,17 +45,23 @@ b3=false
 b4=false
 b5=false
 b6=false
+priorit = 1
 
 executa:
-        if USART_Data_Ready() > 0 then
-           Usart_Read_Text(txt, "/")
-        end if
+'        if USART_Data_Ready() > 0 then
+'           Usart_Read_Text(rcbtxt, "/")
+'
+'        end if
 
-       'Incrementa
+        'Incrementa
         if (testbit(portA,0) = 1) then
            if b0 = false then
               b0 = true
-              i = i + 1
+              if priorit = 1 then
+                 incN = incN + 1
+              else
+                  incP = incP + 1
+              end if
            end if
         end if
         if testbit(portA,0) = 0 then
@@ -49,12 +69,16 @@ executa:
               b0 = false
            end if
         end if
-        
+
        'Decrementa
         if testbit(portA,1) = 1 then
            if b1 = false then
               b1 = true
-              i = i - 1
+              if priorit = 1 then
+                 incN = incN - 1
+              else
+                  incP = incP - 1
+              end if
            end if
         end if
         if testbit(portA,1) = 0 then
@@ -67,7 +91,8 @@ executa:
         if testbit(portA,2) = 1 then
            if b2 = false then
               b2 = true
-              i = 0
+              incN = 0
+              incP = 0
            end if
         end if
         if testbit(portA,2) = 0 then
@@ -76,19 +101,46 @@ executa:
            end if
         end if
         
-       'Envia
-        if testbit(portA,5) = 1 then
+        'Muda prioridade
+        if testbit(portA,3) = 1 then
            if b3 = false then
               b3 = true
+              if priorit = 1 then
+                 priorit = 2
+              else
+                priorit = 1
+              end if
+           end if
+        end if
+        if testbit(portA,3) = 0 then
+           if b3 = true then
+              b3 = false
+           end if
+        end if
+        
+       'Envia
+        if testbit(portA,5) = 1 then
+           if b5 = false then
+              b5 = true
               envia
            end if
         end if
         if testbit(portA,5) = 0 then
-           b3 = false
+           b5 = false
         end if
         
-        if i > 999 then
-           i = 999
+        if incN > 999 then
+           incN = 999
+        end if
+        if incN < 0 then
+           incN = 0
+        end if
+        
+        if incP > 999 then
+           incP = 999
+        end if
+        if incP < 0 then
+           incP = 0
         end if
         
         info = 0

@@ -23,7 +23,7 @@ SimDebug=0
 Count=0
 [OtherFiles]
 Count=1
-Value0=C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo pics\Pic1.pbas
+Value0=D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-Sistemas-Embarcados-II\codigo pics\Pic1.pbas
 Value1=C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo pics\MCU2.pbas
 [TabIndex]
 Value=0
@@ -31,7 +31,7 @@ Value=0
 Count=4
 Value0=C:\Program Files (x86)\Mikroelektronika\mikroBasic\Defs\
 Value1=C:\Program Files (x86)\Mikroelektronika\mikroBasic\Uses\p16\
-Value2=C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo pics\
-Value3=D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-Sistemas-Embarcados-II\codigo pics\
+Value2=D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-Sistemas-Embarcados-II\codigo pics\
+Value3=C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo pics\
 [EEPROMinfo]
 isused=0

@@ -6,10 +6,14 @@ dim rcbtxt as string[20]
 dim incP as integer
 dim incN as integer
 dim info as byte
-
 dim priorit as integer
 dim tipo as integer
 dim senha as integer
+
+dim uni as integer
+dim cen as integer
+dim dez as integer
+dim valor as integer
 
 sub procedure envia
     if priorit = 1 then
@@ -48,12 +52,8 @@ b6=false
 priorit = 1
 
 executa:
-'        if USART_Data_Ready() > 0 then
-'           Usart_Read_Text(rcbtxt, "/")
-'
-'        end if
 
-        'Incrementa
+       'Incrementa
         if (testbit(portA,0) = 1) then
            if b0 = false then
               b0 = true
@@ -142,6 +142,22 @@ executa:
         if incP < 0 then
            incP = 0
         end if
+        
+        incN = incN + 1
+        delay_ms(5)
+        
+        valor = incN div 1000
+        uni =(incN div 100) mod 10
+        cen =(incN div 10) mod 10
+        dez =(incN mod 10)
+        portC = uni + 16
+        delay_ms(5)
+        portC = dez + 32
+        delay_ms(5)
+        portC = cen + 64
+        delay_ms(5)
+        portc = valor + 128
+        delay_ms(5)
         
         info = 0
 

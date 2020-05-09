@@ -36,11 +36,13 @@ ErroAbertura:
             If Len(txtMsgRecebida.Text) > 0 Then
                 If Mid(txtMsgRecebida.Text, 1, 1) = "1" Then
                     i = Mid(txtMsgRecebida.Text, 5, 3)
-                    lblSenhaN.Text = i                    
+                    lblSenhaN.Text = i
+                    lblAtualizaSenhaN.Text = i
                 End If
                 If Mid(txtMsgRecebida.Text, 1, 1) = "2" Then
                     i = Mid(txtMsgRecebida.Text, 5, 3)
                     lblSenhaP.Text = i
+                    lblAtualizaSenhaP.Text = i
                 End If
             End If
         End If

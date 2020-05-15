@@ -1,6 +1,5 @@
 ﻿Public Class Form1
 
-
     Private Sub btnIncrementar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnIncrementar.Click
         Dim valor As Integer
 
@@ -26,11 +25,11 @@ ErroAbertura:
 
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
         On Error GoTo saidaTimer
-
         Dim x As Integer
         Dim i As Integer
 
-        'Recebimento do PIC 1
+
+        'teste de recebimento do PIC 1
         If SerialPort1.BytesToRead > 0 Then
             txtMsgRecebida.Text = ""
             txtMsgRecebida.Text = SerialPort1.ReadExisting

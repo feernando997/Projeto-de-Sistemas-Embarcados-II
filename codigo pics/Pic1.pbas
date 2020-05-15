@@ -1,19 +1,12 @@
 program Pic1
 
-dim b0, b1, b2, b3, b4, b5, b6 as boolean
+dim b0, b1, b2, b3, b4, b5 as boolean
 dim txt  as string[6]
 dim rcbtxt as string[20]
-dim incP as integer
-dim incN as integer
+dim incP, incN, priorit, tipo, senha as integer
 dim info as byte
-dim priorit as integer
-dim tipo as integer
-dim senha as integer
-
-dim uni as integer
-dim cen as integer
-dim dez as integer
-dim valor as integer
+dim uni, cen, dez, mil, i as integer
+dim valor as float
 
 sub procedure envia
     if priorit = 1 then
@@ -37,9 +30,9 @@ TRISC=%00000000
 INTCON=%00000000
 ANSEL=%00000000
 ANSELH=%00000000
-
-Usart_Init(9600)
 PORTC=0
+Usart_Init(9600)
+
 incP=0
 incN=0
 b0=false
@@ -48,11 +41,11 @@ b2=false
 b3=false
 b4=false
 b5=false
-b6=false
 priorit = 1
 
-executa:
+i = 1
 
+executa:
        'Incrementa
         if (testbit(portA,0) = 1) then
            if b0 = false then
@@ -60,7 +53,7 @@ executa:
               if priorit = 1 then
                  incN = incN + 1
               else
-                  incP = incP + 1
+                 incP = incP + 1
               end if
            end if
         end if
@@ -77,7 +70,7 @@ executa:
               if priorit = 1 then
                  incN = incN - 1
               else
-                  incP = incP - 1
+                 incP = incP - 1
               end if
            end if
         end if
@@ -86,7 +79,7 @@ executa:
               b1 = false
            end if
         end if
-        
+
         'Reseta
         if testbit(portA,2) = 1 then
            if b2 = false then
@@ -100,7 +93,7 @@ executa:
               b2 = false
            end if
         end if
-        
+
         'Muda prioridade
         if testbit(portA,3) = 1 then
            if b3 = false then
@@ -117,49 +110,66 @@ executa:
               b3 = false
            end if
         end if
-        
-       'Envia
+
+       'Envia dados
         if testbit(portA,5) = 1 then
            if b5 = false then
               b5 = true
               envia
+              i = i + 1
            end if
         end if
         if testbit(portA,5) = 0 then
            b5 = false
         end if
-        
+
         if incN > 999 then
            incN = 999
         end if
         if incN < 0 then
            incN = 0
         end if
-        
+
         if incP > 999 then
            incP = 999
         end if
         if incP < 0 then
            incP = 0
         end if
+
+
+        'Controle de exibição
+        valor = i
         
-        incN = incN + 1
-        delay_ms(5)
+        mil = valor div 1000
+        cen = valor div 100 - (mil * 10)
+        dez = valor div 10 - (cen * 10) - (mil * 100)
+        uni = valor - (dez * 10) - (cen * 100) - (mil * 1000)
+
+        PORTC = uni + 16
+        delay_ms(6)
         
-        valor = incN div 1000
-        uni =(incN div 100) mod 10
-        cen =(incN div 10) mod 10
-        dez =(incN mod 10)
-        portC = uni + 16
-        delay_ms(5)
-        portC = dez + 32
-        delay_ms(5)
-        portC = cen + 64
-        delay_ms(5)
-        portc = valor + 128
-        delay_ms(5)
+        PORTC = dez + 32
+        delay_ms(6)
         
-        info = 0
+        PORTC = cen + 64
+        delay_ms(6)
+        
+        PORTC = mil + 128
+        delay_ms(6)
+
+        i = i + 1
+        
+        if i > 20 then
+           portB.4 = 1
+        else
+           portB.4 = 0
+        end if
+        
+        if i > 999 then
+           i = 999
+        end if
+
 
         goto executa
 end.

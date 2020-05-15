@@ -4,11 +4,11 @@ dim recebe as string[6]
 dim senha as integer
 dim uni   as integer
 dim dez   as integer
-dim cen   as integer
-dim mil   as integer
+dim cent  as integer
 dim tipo  as integer
 
 inicio:
+
 TRISA=%11011111
 TRISB=%01111111
 TRISC=%00000000
@@ -17,30 +17,35 @@ ANSEL=%00000000
 ANSELH=%00000000
 
 USART_INIT(9600)
-PORTC = 0
-portA.5 = 0
+portc = 0
+porta.5 = 0
 
 executa:
 
       Usart_Read_Text(recebe,"/")
+      if strcmp(recebe, "RP") = 0 then
+         setbit(porta,5)
+         delay_ms(1000)
+         clearbit(porta,5)
+      end if
       senha = StrToInt(recebe)
 
-      mil = senha div 1000
-      cen = senha div 100 - (mil * 10)
-      dez = senha div 10 - (cen * 10) - (mil * 100)
-      uni = senha - (dez * 10) - (cen * 100) - (mil * 1000)
+      tipo = senha div 1000
+      cent = senha div 100 - (tipo * 10)
+      dez = senha div 10 - (cent * 10) - (tipo * 100)
+      uni = senha - (dez * 10) - (cent * 100) - (tipo * 1000)
 
-      PORTC = uni + 16
-      delay_ms(3)
+      portc = uni + 16
+      delay_ms(6)
 
-      PORTC = dez + 32
-      delay_ms(3)
+      portc = dez + 32
+      delay_ms(6)
 
-      PORTC = cen + 64
-      delay_ms(3)
+      portc = cent + 64
+      delay_ms(6)
 
-      PORTC = mil + 128
-      delay_ms(3)
+      portc = tipo + 128
+      delay_ms(6)
 
       goto executa
 end.

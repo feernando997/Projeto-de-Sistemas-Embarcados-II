@@ -82,7 +82,6 @@ Partial Class Form1
         Me.SerialPort2 = New System.IO.Ports.SerialPort(Me.components)
         Me.txtMensagem = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtMsgRecebida = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
@@ -751,7 +750,6 @@ Partial Class Form1
     Friend WithEvents SerialPort2 As System.IO.Ports.SerialPort
     Friend WithEvents txtMensagem As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Timer2 As System.Windows.Forms.Timer
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents txtMsgRecebida As System.Windows.Forms.TextBox
 

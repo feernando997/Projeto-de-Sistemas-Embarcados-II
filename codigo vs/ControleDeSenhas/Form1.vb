@@ -65,8 +65,8 @@ saidaTimer:
     End Sub
 
     Private Sub btnRepetir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRepetir.Click
-        If SerialPort1.IsOpen() = True Then
-            SerialPort1.Write("0")
+        If SerialPort2.IsOpen() = True Then
+            SerialPort2.Write("RP")
         End If
     End Sub
 

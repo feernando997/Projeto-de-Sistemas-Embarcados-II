@@ -23,6 +23,11 @@ porta.5 = 0
 executa:
 
       Usart_Read_Text(recebe,"/")
+      if strcmp(recebe, "RP") = 0 then
+         setbit(porta,5)
+         delay_ms(1000)
+         clearbit(porta,5)
+      end if
       senha = StrToInt(recebe)
 
       tipo = senha div 1000
@@ -31,16 +36,16 @@ executa:
       uni = senha - (dez * 10) - (cent * 100) - (tipo * 1000)
 
       portc = uni + 16
-      delay_ms(5)
+      delay_ms(6)
 
       portc = dez + 32
-      delay_ms(5)
+      delay_ms(6)
 
       portc = cent + 64
-      delay_ms(5)
+      delay_ms(6)
 
       portc = tipo + 128
-      delay_ms(5)
+      delay_ms(6)
 
       goto executa
 end.

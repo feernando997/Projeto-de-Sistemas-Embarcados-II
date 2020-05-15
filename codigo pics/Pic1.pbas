@@ -4,9 +4,8 @@ dim b0, b1, b2, b3, b4, b5 as boolean
 dim txt  as string[6]
 dim rcbtxt as string[20]
 dim incP, incN, priorit, tipo, senha as integer
-dim info as byte
 dim uni, cen, dez, mil, i as integer
-dim valor as float
+dim valor as integer
 
 sub procedure envia
     if priorit = 1 then
@@ -43,11 +42,9 @@ b4=false
 b5=false
 priorit = 1
 
-i = 1
-
 executa:
        'Incrementa
-        if (testbit(portA,0) = 1) then
+        if testbit(portA,0) = 1 then
            if b0 = false then
               b0 = true
               if priorit = 1 then
@@ -94,7 +91,7 @@ executa:
            end if
         end if
 
-        'Muda prioridade
+        'Prioridade
         if testbit(portA,3) = 1 then
            if b3 = false then
               b3 = true
@@ -108,6 +105,23 @@ executa:
         if testbit(portA,3) = 0 then
            if b3 = true then
               b3 = false
+           end if
+        end if
+        
+        'BIP/Led
+        if testbit(portA,4) = 1 then
+           if b4 = false then
+              b4 = true
+              if portB.4 = 0 then
+                 portB.4 = 1
+              else
+                 portB.4 = 0
+              end if
+           end if
+        end if
+        if testbit(portA,4) = 0 then
+           if b4 = true then
+              b4 = false
            end if
         end if
 
@@ -137,39 +151,29 @@ executa:
            incP = 0
         end if
 
-
         'Controle de exibição
-        valor = i
-        
+        if priorit = 1 then
+           valor = incN
+        else
+           valor = incP
+        end if
+
         mil = valor div 1000
         cen = valor div 100 - (mil * 10)
         dez = valor div 10 - (cen * 10) - (mil * 100)
         uni = valor - (dez * 10) - (cen * 100) - (mil * 1000)
 
         PORTC = uni + 16
-        delay_ms(6)
+        delay_ms(3)
         
         PORTC = dez + 32
-        delay_ms(6)
+        delay_ms(3)
         
         PORTC = cen + 64
-        delay_ms(6)
+        delay_ms(3)
         
         PORTC = mil + 128
-        delay_ms(6)
-
-        i = i + 1
-        
-        if i > 20 then
-           portB.4 = 1
-        else
-           portB.4 = 0
-        end if
-        
-        if i > 999 then
-           i = 999
-        end if
-
+        delay_ms(3)
 
         goto executa
 end.

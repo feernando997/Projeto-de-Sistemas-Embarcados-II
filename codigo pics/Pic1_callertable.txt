@@ -2,13 +2,6 @@ main
 	Mul_16x16_S
 	Div_16x16_S
 		Div_16x16_S_L
-	Double2Int
-		SETIOV3224
-	Int2Double
-		NRM3232
-			FIXSIGN32
-			SETFUN32
-			RES032
 	USART_Init
 	envia
 		Usart_Write_Text

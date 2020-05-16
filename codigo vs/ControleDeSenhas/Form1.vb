@@ -227,6 +227,24 @@ saidaTimer:
 
     Private Sub btnEnviaSenhaN_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviaSenhaN.Click
 
+        If SerialPort1.IsOpen() = True Then
+
+            If lblAtualizaSenhaN.Text.Length = 1 Then
+                SerialPort1.Write("100" + lblAtualizaSenhaN.Text + "/")
+            End If
+
+            If lblAtualizaSenhaN.Text.Length = 2 Then
+                SerialPort1.Write("10" + lblAtualizaSenhaN.Text + "/")
+            End If
+
+            If lblAtualizaSenhaN.Text.Length = 3 Then
+                SerialPort1.Write("1" + lblAtualizaSenhaN.Text + "/")
+            End If
+
+            txtMensagem.Text = "1" + lblAtualizaSenhaN.Text + "/"
+            lblSenhaN.Text = lblAtualizaSenhaN.Text
+        End If
+
         If SerialPort2.IsOpen() = True Then
 
             If lblAtualizaSenhaN.Text.Length = 1 Then
@@ -241,9 +259,10 @@ saidaTimer:
                 SerialPort2.Write("1" + lblAtualizaSenhaN.Text + "/")
             End If
 
-            txtMensagem.Text = "1" + lblAtualizaSenhaN.Text + "/"
+            txtMensagem.Text = "2" + lblAtualizaSenhaN.Text + "/"
             lblSenhaN.Text = lblAtualizaSenhaN.Text
         End If
+
     End Sub
 
     Private Sub btnEnviaSenhaP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviaSenhaP.Click

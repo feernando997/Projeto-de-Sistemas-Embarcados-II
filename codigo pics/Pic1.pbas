@@ -1,12 +1,11 @@
 program Pic1
 
+dim recebe, txt as string[6]
 dim b0, b1, b2, b3, b4, b5 as boolean
-dim txt  as string[6]
-dim rcbtxt as string[20]
-dim incP, incN, priorit, tipo, senha as integer
-dim uni, cen, dez, mil, i as integer
-dim valor as integer
+dim incP, incN, priorit as integer
+dim uni, cen, dez, mil, valor, i as integer
 
+'Controle de prioridade
 sub procedure envia
     if priorit = 1 then
       intToStr(incN, txt)
@@ -32,17 +31,21 @@ ANSELH=%00000000
 PORTC=0
 Usart_Init(9600)
 
-incP=0
-incN=0
 b0=false
 b1=false
 b2=false
 b3=false
 b4=false
 b5=false
-priorit = 1
+priorit=1
+incP=0
+incN=0
 
 executa:
+       'Recebe valores do controle central
+        Usart_Read_Text(recebe, "/")
+        valor = StrToInt(recebe)
+
        'Incrementa
         if testbit(portA,0) = 1 then
            if b0 = false then
@@ -91,7 +94,7 @@ executa:
            end if
         end if
 
-        'Prioridade
+        'Muda prioridade
         if testbit(portA,3) = 1 then
            if b3 = false then
               b3 = true
@@ -108,7 +111,7 @@ executa:
            end if
         end if
         
-        'BIP/Led
+        'Emite o alerta
         if testbit(portA,4) = 1 then
            if b4 = false then
               b4 = true
@@ -165,13 +168,10 @@ executa:
 
         PORTC = uni + 16
         delay_ms(3)
-        
         PORTC = dez + 32
         delay_ms(3)
-        
         PORTC = cen + 64
         delay_ms(3)
-        
         PORTC = mil + 128
         delay_ms(3)
 

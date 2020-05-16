@@ -100,14 +100,15 @@ Partial Class Form1
         Me.GroupBox1.Controls.Add(Me.btnIncrementar)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(216, 117)
+        Me.GroupBox1.Size = New System.Drawing.Size(220, 117)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Incrementos"
         '
         'btnDecrPriorit
         '
-        Me.btnDecrPriorit.Location = New System.Drawing.Point(87, 48)
+        Me.btnDecrPriorit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDecrPriorit.Location = New System.Drawing.Point(89, 48)
         Me.btnDecrPriorit.Name = "btnDecrPriorit"
         Me.btnDecrPriorit.Size = New System.Drawing.Size(123, 23)
         Me.btnDecrPriorit.TabIndex = 6
@@ -116,6 +117,7 @@ Partial Class Form1
         '
         'btnDecrNormal
         '
+        Me.btnDecrNormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDecrNormal.Location = New System.Drawing.Point(6, 48)
         Me.btnDecrNormal.Name = "btnDecrNormal"
         Me.btnDecrNormal.Size = New System.Drawing.Size(81, 23)
@@ -125,6 +127,7 @@ Partial Class Form1
         '
         'btnRepetir
         '
+        Me.btnRepetir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRepetir.Location = New System.Drawing.Point(55, 77)
         Me.btnRepetir.Name = "btnRepetir"
         Me.btnRepetir.Size = New System.Drawing.Size(75, 23)
@@ -134,7 +137,8 @@ Partial Class Form1
         '
         'btnIncPrioritario
         '
-        Me.btnIncPrioritario.Location = New System.Drawing.Point(87, 19)
+        Me.btnIncPrioritario.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnIncPrioritario.Location = New System.Drawing.Point(89, 19)
         Me.btnIncPrioritario.Name = "btnIncPrioritario"
         Me.btnIncPrioritario.Size = New System.Drawing.Size(123, 23)
         Me.btnIncPrioritario.TabIndex = 1
@@ -143,6 +147,7 @@ Partial Class Form1
         '
         'btnIncrementar
         '
+        Me.btnIncrementar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnIncrementar.Location = New System.Drawing.Point(6, 19)
         Me.btnIncrementar.Name = "btnIncrementar"
         Me.btnIncrementar.Size = New System.Drawing.Size(81, 23)
@@ -155,7 +160,7 @@ Partial Class Form1
         Me.GroupBox2.Controls.Add(Me.btnResetAll)
         Me.GroupBox2.Controls.Add(Me.btnResetPr)
         Me.GroupBox2.Controls.Add(Me.btnReset)
-        Me.GroupBox2.Location = New System.Drawing.Point(234, 237)
+        Me.GroupBox2.Location = New System.Drawing.Point(238, 237)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(306, 122)
         Me.GroupBox2.TabIndex = 1
@@ -164,6 +169,7 @@ Partial Class Form1
         '
         'btnResetAll
         '
+        Me.btnResetAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnResetAll.Location = New System.Drawing.Point(91, 76)
         Me.btnResetAll.Name = "btnResetAll"
         Me.btnResetAll.Size = New System.Drawing.Size(101, 23)
@@ -173,6 +179,7 @@ Partial Class Form1
         '
         'btnResetPr
         '
+        Me.btnResetPr.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnResetPr.Location = New System.Drawing.Point(149, 37)
         Me.btnResetPr.Name = "btnResetPr"
         Me.btnResetPr.Size = New System.Drawing.Size(140, 23)
@@ -182,6 +189,7 @@ Partial Class Form1
         '
         'btnReset
         '
+        Me.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnReset.Location = New System.Drawing.Point(6, 37)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(137, 23)
@@ -197,7 +205,7 @@ Partial Class Form1
         Me.GroupBox3.Controls.Add(Me.Label2)
         Me.GroupBox3.Controls.Add(Me.lblSenhaN)
         Me.GroupBox3.Controls.Add(Me.Label1)
-        Me.GroupBox3.Location = New System.Drawing.Point(234, 12)
+        Me.GroupBox3.Location = New System.Drawing.Point(238, 12)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(418, 219)
         Me.GroupBox3.TabIndex = 2
@@ -206,6 +214,7 @@ Partial Class Form1
         '
         'btnCopiaSenhaP
         '
+        Me.btnCopiaSenhaP.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCopiaSenhaP.Location = New System.Drawing.Point(201, 161)
         Me.btnCopiaSenhaP.Name = "btnCopiaSenhaP"
         Me.btnCopiaSenhaP.Size = New System.Drawing.Size(75, 23)
@@ -215,6 +224,7 @@ Partial Class Form1
         '
         'btnCopiaSenhaN
         '
+        Me.btnCopiaSenhaN.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCopiaSenhaN.Location = New System.Drawing.Point(35, 161)
         Me.btnCopiaSenhaN.Name = "btnCopiaSenhaN"
         Me.btnCopiaSenhaN.Size = New System.Drawing.Size(75, 23)
@@ -224,10 +234,11 @@ Partial Class Form1
         '
         'lblSenhaP
         '
+        Me.lblSenhaP.AutoSize = True
         Me.lblSenhaP.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSenhaP.Location = New System.Drawing.Point(188, 85)
         Me.lblSenhaP.Name = "lblSenhaP"
-        Me.lblSenhaP.Size = New System.Drawing.Size(212, 69)
+        Me.lblSenhaP.Size = New System.Drawing.Size(68, 73)
         Me.lblSenhaP.TabIndex = 3
         Me.lblSenhaP.Text = "0"
         '
@@ -242,10 +253,11 @@ Partial Class Form1
         '
         'lblSenhaN
         '
+        Me.lblSenhaN.AutoSize = True
         Me.lblSenhaN.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSenhaN.Location = New System.Drawing.Point(20, 85)
         Me.lblSenhaN.Name = "lblSenhaN"
-        Me.lblSenhaN.Size = New System.Drawing.Size(172, 69)
+        Me.lblSenhaN.Size = New System.Drawing.Size(68, 73)
         Me.lblSenhaN.TabIndex = 1
         Me.lblSenhaN.Text = "0"
         '
@@ -570,6 +582,7 @@ Partial Class Form1
         '
         'btnEnviaSenhaP
         '
+        Me.btnEnviaSenhaP.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEnviaSenhaP.Location = New System.Drawing.Point(117, 66)
         Me.btnEnviaSenhaP.Name = "btnEnviaSenhaP"
         Me.btnEnviaSenhaP.Size = New System.Drawing.Size(75, 23)
@@ -579,6 +592,7 @@ Partial Class Form1
         '
         'btnEnviaSenhaN
         '
+        Me.btnEnviaSenhaN.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEnviaSenhaN.Location = New System.Drawing.Point(15, 66)
         Me.btnEnviaSenhaN.Name = "btnEnviaSenhaN"
         Me.btnEnviaSenhaN.Size = New System.Drawing.Size(75, 23)
@@ -684,6 +698,7 @@ Partial Class Form1
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)

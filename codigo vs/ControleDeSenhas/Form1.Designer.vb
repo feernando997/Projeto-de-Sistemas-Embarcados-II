@@ -128,7 +128,7 @@ Partial Class Form1
         'btnRepetir
         '
         Me.btnRepetir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRepetir.Location = New System.Drawing.Point(55, 77)
+        Me.btnRepetir.Location = New System.Drawing.Point(71, 77)
         Me.btnRepetir.Name = "btnRepetir"
         Me.btnRepetir.Size = New System.Drawing.Size(75, 23)
         Me.btnRepetir.TabIndex = 4
@@ -309,7 +309,7 @@ Partial Class Form1
         '
         'btnP0
         '
-        Me.btnP0.Location = New System.Drawing.Point(183, 150)
+        Me.btnP0.Location = New System.Drawing.Point(183, 149)
         Me.btnP0.Name = "btnP0"
         Me.btnP0.Size = New System.Drawing.Size(22, 23)
         Me.btnP0.TabIndex = 27
@@ -578,7 +578,7 @@ Partial Class Form1
         Me.GroupBox5.Size = New System.Drawing.Size(216, 96)
         Me.GroupBox5.TabIndex = 4
         Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "Senhas a ser atualizada"
+        Me.GroupBox5.Text = "Senhas a serem atualizadas"
         '
         'btnEnviaSenhaP
         '
@@ -593,7 +593,7 @@ Partial Class Form1
         'btnEnviaSenhaN
         '
         Me.btnEnviaSenhaN.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnEnviaSenhaN.Location = New System.Drawing.Point(15, 66)
+        Me.btnEnviaSenhaN.Location = New System.Drawing.Point(12, 66)
         Me.btnEnviaSenhaN.Name = "btnEnviaSenhaN"
         Me.btnEnviaSenhaN.Size = New System.Drawing.Size(75, 23)
         Me.btnEnviaSenhaN.TabIndex = 4

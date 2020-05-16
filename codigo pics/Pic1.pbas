@@ -43,8 +43,11 @@ incN=0
 
 executa:
        'Recebe valores do controle central
-        Usart_Read_Text(recebe, "/")
-        valor = StrToInt(recebe)
+       if USART_Data_Ready() <> 0 then
+          Usart_Read_Text(recebe, "/")
+          valor = StrToInt(recebe)
+          Usart_Write_Text("/")
+       end if
 
        'Incrementa
         if testbit(portA,0) = 1 then
@@ -80,7 +83,7 @@ executa:
            end if
         end if
 
-        'Reseta
+       'Reseta
         if testbit(portA,2) = 1 then
            if b2 = false then
               b2 = true

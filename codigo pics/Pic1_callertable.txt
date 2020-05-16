@@ -9,6 +9,8 @@ main
 		IntToStr
 			Div_16x16_S
 				Div_16x16_S_L
+	Usart_Write_Text
+		USART_Write
 	StrToInt
 		Div_32x32_S
 			COMFREM
@@ -19,3 +21,4 @@ main
 	Usart_Read_Text
 		USART_Read
 		USART_Data_Ready
+	USART_Data_Ready

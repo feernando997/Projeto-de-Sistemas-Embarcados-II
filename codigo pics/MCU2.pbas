@@ -1,16 +1,17 @@
 program MCU2
 
 dim recebe as string[6]
-dim senha as integer
+dim aux as integer
 dim uni   as integer
 dim dez   as integer
 dim cent  as integer
-dim tipo  as integer
+dim mil  as integer
+dim valor as integer
 
 inicio:
 
 TRISA=%11011111
-TRISB=%01111111
+TRISB=%00101111
 TRISC=%00000000
 INTCON=%00000000
 ANSEL=%00000000
@@ -18,29 +19,56 @@ ANSELH=%00000000
 
 USART_INIT(9600)
 portc = 0
-porta.5 = 0
+
+PORTB.4=1
 
 executa:
 
-      Usart_Read_Text(recebe,"/")
-      senha = StrToInt(recebe)
+      if Usart_Data_Ready() > 0 then
+        Usart_Read_Text(recebe,"/")
+        aux = StrToInt(recebe)
 
-      tipo = senha div 1000
-      cent = senha div 100 - (tipo * 10)
-      dez = senha div 10 - (cent * 10) - (tipo * 100)
-      uni = senha - (dez * 10) - (cent * 100) - (tipo * 1000)
+        if (aux >= 1000) and (aux < 3000) then
+           valor = aux
+        end if
+      
+      end if
 
-      portc = uni + 16
-      delay_ms(6)
-
-      portc = dez + 32
-      delay_ms(6)
-
-      portc = cent + 64
-      delay_ms(6)
-
-      portc = tipo + 128
-      delay_ms(6)
-
+      gosub exibe
+      
+      
       goto executa
+      
+exibe:
+
+      mil = valor div 1000
+      cent = valor div 100 - (mil * 10)
+      dez = valor div 10 - (cent * 10) - (mil * 100)
+      uni = valor - (dez * 10) - (cent * 100) - (mil * 1000)
+
+      ' acende e, g, c
+      if mil = 1 then
+           portb.4 = 1
+           portb.6 = 0
+      end if
+      ' acende e, f, a, b, g
+      if mil = 2 then
+          portb.4 = 0
+          portb.6 = 1
+      end if
+
+      PORTC = uni
+      PORTC.4=1 PORTC.5=0 PORTC.6=0
+      delay_ms(5)
+
+      PORTC = dez
+      PORTC.4=0 PORTC.5=1 PORTC.6=0
+      delay_ms(5)
+
+      PORTC = cent
+      PORTC.4=0 PORTC.5=0 PORTC.6=1
+      delay_ms(5)
+      
+      return
+
 end.

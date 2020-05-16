@@ -226,41 +226,27 @@ saidaTimer:
     End Sub
 
     Private Sub btnEnviaSenhaN_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviaSenhaN.Click
+        Dim senha As Integer
 
+        senha = 1000 + CInt(lblAtualizaSenhaN.Text)
         If SerialPort2.IsOpen() = True Then
+            SerialPort2.Write(senha.ToString + "/")
 
-            If lblAtualizaSenhaN.Text.Length = 1 Then
-                SerialPort2.Write("100" + lblAtualizaSenhaN.Text + "/")
-            End If
-
-            If lblAtualizaSenhaN.Text.Length = 2 Then
-                SerialPort2.Write("10" + lblAtualizaSenhaN.Text + "/")
-            End If
-
-            If lblAtualizaSenhaN.Text.Length = 3 Then
-                SerialPort2.Write("1" + lblAtualizaSenhaN.Text + "/")
-            End If
-
-            txtMensagem.Text = "1" + lblAtualizaSenhaN.Text + "/"
+            txtMensagem.Text = senha.ToString + "/"
             lblSenhaN.Text = lblAtualizaSenhaN.Text
         End If
     End Sub
 
     Private Sub btnEnviaSenhaP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviaSenhaP.Click
+        Dim senha As Integer
+
+        senha = 2000 + CInt(lblAtualizaSenhaP.Text)
+
         If SerialPort2.IsOpen() = True Then
-            If lblAtualizaSenhaP.Text.Length = 1 Then
-                SerialPort2.Write("200" + lblAtualizaSenhaP.Text + "/")
-            End If
 
-            If lblAtualizaSenhaP.Text.Length = 2 Then
-                SerialPort2.Write("20" + lblAtualizaSenhaP.Text + "/")
-            End If
+            SerialPort2.Write(senha.ToString + "/")
 
-            If lblAtualizaSenhaP.Text.Length = 3 Then
-                SerialPort2.Write("2" + lblAtualizaSenhaP.Text + "/")
-            End If
-
-            txtMensagem.Text = "2" + lblAtualizaSenhaP.Text + "/"
+            txtMensagem.Text = senha.ToString + "/"
             lblSenhaP.Text = lblAtualizaSenhaP.Text
         End If
     End Sub

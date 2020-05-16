@@ -13,3 +13,4 @@ main
 	Usart_Read_Text
 		USART_Read
 		USART_Data_Ready
+	USART_Data_Ready

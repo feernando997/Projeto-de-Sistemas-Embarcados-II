@@ -4,18 +4,19 @@ dim recebe, txt as string[6]
 dim b0, b1, b2, b3, b4, b5 as boolean
 dim incP, incN, priorit as integer
 dim uni, cen, dez, mil, valor, i as integer
+dim valorN, valorP as integer
 
 'Controle de prioridade
 sub procedure envia
     if priorit = 1 then
-      intToStr(incN, txt)
-      Usart_Write_Text("1")
+      valorN = 1000 + incN
+      IntToStr(valorN, txt)
       Usart_Write_Text(txt)
       Usart_Write_Text("/")
     end if
     if priorit = 2 then
-      intToStr(incP, txt)
-      Usart_Write_Text("2")
+      valorP = 2000 + incP
+      IntToStr(valorP, txt)
       Usart_Write_Text(txt)
       Usart_Write_Text("/")
     end if
@@ -43,10 +44,9 @@ incN=0
 
 executa:
        'Recebe valores do controle central
-       if USART_Data_Ready() <> 0 then
+       if USART_Data_Ready() > 0 then
           Usart_Read_Text(recebe, "/")
           valor = StrToInt(recebe)
-          Usart_Write_Text("/")
        end if
 
        'Incrementa
@@ -55,8 +55,12 @@ executa:
               b0 = true
               if priorit = 1 then
                  incN = incN + 1
+                 if incN > 999 then incN = 999 end if
+                 if incN < 0   then incN = 0   end if
               else
                  incP = incP + 1
+                 if incP > 999 then incP = 999 end if
+                 if incP < 0   then incP = 0   end if
               end if
            end if
         end if
@@ -82,21 +86,6 @@ executa:
               b1 = false
            end if
         end if
-
-       'Reseta
-        if testbit(portA,2) = 1 then
-           if b2 = false then
-              b2 = true
-              incN = 0
-              incP = 0
-           end if
-        end if
-        if testbit(portA,2) = 0 then
-           if b2 = true then
-              b2 = false
-           end if
-        end if
-
         'Muda prioridade
         if testbit(portA,3) = 1 then
            if b3 = false then
@@ -136,25 +125,10 @@ executa:
            if b5 = false then
               b5 = true
               envia
-              i = i + 1
            end if
         end if
         if testbit(portA,5) = 0 then
            b5 = false
-        end if
-
-        if incN > 999 then
-           incN = 999
-        end if
-        if incN < 0 then
-           incN = 0
-        end if
-
-        if incP > 999 then
-           incP = 999
-        end if
-        if incP < 0 then
-           incP = 0
         end if
 
         'Controle de exibição
@@ -163,7 +137,7 @@ executa:
         else
            valor = incP
         end if
-
+        
         mil = valor div 1000
         cen = valor div 100 - (mil * 10)
         dez = valor div 10 - (cen * 10) - (mil * 100)

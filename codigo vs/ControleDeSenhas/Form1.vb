@@ -35,13 +35,13 @@ ErroAbertura:
             txtMsgRecebida.Text = ""
             txtMsgRecebida.Text = SerialPort1.ReadExisting
             If Len(txtMsgRecebida.Text) > 0 Then
-                If Mid(txtMsgRecebida.Text, 1, 1) = "1" Then
-                    i = Mid(txtMsgRecebida.Text, 5, 3)
+                If Mid(txtMsgRecebida.Text, 3, 1) = "1" Then
+                    i = Mid(txtMsgRecebida.Text, 4, 3)
                     lblSenhaN.Text = i
                     lblAtualizaSenhaN.Text = i
                 End If
-                If Mid(txtMsgRecebida.Text, 1, 1) = "2" Then
-                    i = Mid(txtMsgRecebida.Text, 5, 3)
+                If Mid(txtMsgRecebida.Text, 3, 1) = "2" Then
+                    i = Mid(txtMsgRecebida.Text, 4, 3)
                     lblSenhaP.Text = i
                     lblAtualizaSenhaP.Text = i
                 End If
@@ -235,6 +235,9 @@ saidaTimer:
             txtMensagem.Text = senha.ToString + "/"
             lblSenhaN.Text = lblAtualizaSenhaN.Text
         End If
+        If SerialPort1.IsOpen() = True Then
+            SerialPort1.Write(senha.ToString + "/")
+        End If
     End Sub
 
     Private Sub btnEnviaSenhaP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviaSenhaP.Click
@@ -261,11 +264,14 @@ saidaTimer:
         senha = 2000 + CInt(lblAtualizaSenhaP.Text)
 
         If SerialPort2.IsOpen() = True Then
-
             SerialPort2.Write(senha.ToString + "/")
 
             txtMensagem.Text = senha.ToString + "/"
             lblSenhaP.Text = lblAtualizaSenhaP.Text
+        End If
+
+        If SerialPort1.IsOpen() = True Then
+            SerialPort1.Write(senha.ToString + "/")
         End If
 
     End Sub

@@ -238,7 +238,25 @@ saidaTimer:
     End Sub
 
     Private Sub btnEnviaSenhaP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviaSenhaP.Click
+
         Dim senha As Integer
+
+        'If SerialPort1.IsOpen() = True Then
+        'If lblAtualizaSenhaP.Text.Length = 1 Then
+        'SerialPort1.Write("100" + lblAtualizaSenhaP.Text + "/")
+        'End If
+
+        'If lblAtualizaSenhaP.Text.Length = 2 Then
+        'SerialPort1.Write("10" + lblAtualizaSenhaP.Text + "/")
+        'End If
+
+        'If lblAtualizaSenhaP.Text.Length = 3 Then
+        'SerialPort1.Write("1" + lblAtualizaSenhaP.Text + "/")
+        'End If
+
+        'txtMensagem.Text = "2" + lblAtualizaSenhaP.Text + "/"
+        'lblSenhaP.Text = lblAtualizaSenhaP.Text
+        'End If
 
         senha = 2000 + CInt(lblAtualizaSenhaP.Text)
 
@@ -249,6 +267,7 @@ saidaTimer:
             txtMensagem.Text = senha.ToString + "/"
             lblSenhaP.Text = lblAtualizaSenhaP.Text
         End If
+
     End Sub
 
     Private Sub btnApagaTextoP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApagaTextoP.Click

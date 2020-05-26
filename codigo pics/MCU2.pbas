@@ -55,12 +55,11 @@ exibe:
       dez = valor div 10 - (cent * 10) - (mil * 100)
       uni = valor - (dez * 10) - (cent * 100) - (mil * 1000)
 
-      ' acende e, g, c
       if mil = 1 then
            portb.4 = 0
            portb.6 = 1
       end if
-      ' acende e, f, a, b, g
+
       if mil = 2 then
           portb.4 = 1
           portb.6 = 0

@@ -8,6 +8,7 @@ dim dez   as integer
 dim cent  as integer
 dim mil  as integer
 dim valor as integer
+dim bip   as boolean
 
 inicio:
 

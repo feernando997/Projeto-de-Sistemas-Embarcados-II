@@ -20,8 +20,12 @@ ANSELH=%00000000
 
 USART_INIT(9600)
 portc = 0
+porta = 0
 
 PORTB.4=1
+
+valor = 0
+aux = 0
 
 executa:
 
@@ -33,10 +37,14 @@ executa:
            valor = aux
         end if
       
+        gosub exibe
+        
+        aux = 0
+        recebe = ""
       end if
 
       gosub exibe
-      
+      delay_ms(10)
       
       goto executa
       

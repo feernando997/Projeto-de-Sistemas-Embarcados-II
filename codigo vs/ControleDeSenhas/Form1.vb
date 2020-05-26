@@ -1,4 +1,4 @@
-﻿Public Class Form1
+﻿Public Class frmControleSenha
 
 
     Private Sub btnIncrementar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnIncrementar.Click
@@ -21,13 +21,10 @@
         SerialPort2.Open()
         Exit Sub
 ErroAbertura:
-        x = MsgBox("Erro ao abrir a porta serial COM4. Verifique...", MsgBoxStyle.OkOnly, "Erro de Hardware")
+        x = MsgBox("Erro ao abrir a porta serial. Verifique...", MsgBoxStyle.OkOnly, "Erro de Hardware")
     End Sub
 
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
-        On Error GoTo saidaTimer
-
-        Dim x As Integer
         Dim i As Integer
 
         'Recebimento do PIC 1
@@ -48,9 +45,6 @@ ErroAbertura:
             End If
         End If
 
-        Exit Sub
-saidaTimer:
-        x = MsgBox("Erro ao ler porta COM3", MsgBoxStyle.OkOnly, "Erro de Hardware")
     End Sub
 
     Private Sub btnIncPrioritario_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnIncPrioritario.Click
@@ -66,9 +60,7 @@ saidaTimer:
     End Sub
 
     Private Sub btnRepetir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRepetir.Click
-        If SerialPort2.IsOpen() = True Then
-            SerialPort2.Write("RP")
-        End If
+
     End Sub
 
     Private Sub btnReset_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReset.Click
@@ -226,54 +218,15 @@ saidaTimer:
     End Sub
 
     Private Sub btnEnviaSenhaN_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviaSenhaN.Click
-        Dim senha As Integer
-
-        senha = 1000 + CInt(lblAtualizaSenhaN.Text)
         If SerialPort2.IsOpen() = True Then
-            SerialPort2.Write(senha.ToString + "/")
-
-            txtMensagem.Text = senha.ToString + "/"
             lblSenhaN.Text = lblAtualizaSenhaN.Text
-        End If
-        If SerialPort1.IsOpen() = True Then
-            SerialPort1.Write(senha.ToString + "/")
         End If
     End Sub
 
     Private Sub btnEnviaSenhaP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviaSenhaP.Click
-
-        Dim senha As Integer
-
-        'If SerialPort1.IsOpen() = True Then
-        'If lblAtualizaSenhaP.Text.Length = 1 Then
-        'SerialPort1.Write("100" + lblAtualizaSenhaP.Text + "/")
-        'End If
-
-        'If lblAtualizaSenhaP.Text.Length = 2 Then
-        'SerialPort1.Write("10" + lblAtualizaSenhaP.Text + "/")
-        'End If
-
-        'If lblAtualizaSenhaP.Text.Length = 3 Then
-        'SerialPort1.Write("1" + lblAtualizaSenhaP.Text + "/")
-        'End If
-
-        'txtMensagem.Text = "2" + lblAtualizaSenhaP.Text + "/"
-        'lblSenhaP.Text = lblAtualizaSenhaP.Text
-        'End If
-
-        senha = 2000 + CInt(lblAtualizaSenhaP.Text)
-
         If SerialPort2.IsOpen() = True Then
-            SerialPort2.Write(senha.ToString + "/")
-
-            txtMensagem.Text = senha.ToString + "/"
             lblSenhaP.Text = lblAtualizaSenhaP.Text
         End If
-
-        If SerialPort1.IsOpen() = True Then
-            SerialPort1.Write(senha.ToString + "/")
-        End If
-
     End Sub
 
     Private Sub btnApagaTextoP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApagaTextoP.Click
@@ -325,7 +278,7 @@ saidaTimer:
         End If
 
     End Sub
-    
+
     Private Sub lblAtualizaSenhaP_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblAtualizaSenhaP.TextChanged
         Dim valorP As Integer
 
@@ -352,31 +305,78 @@ saidaTimer:
         lblAtualizaSenhaP.Text = lblSenhaP.Text
     End Sub
 
+    Dim valor As Integer
+    Dim milhar As Integer
+    Dim centena As Integer
+    Dim dezena As Integer
+    Dim unidade As Integer
     Private Sub EvAtualizaSenhaN(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblSenhaN.TextChanged
-        If SerialPort2.IsOpen() = True Then
-            If lblSenhaN.Text.Length = 1 Then
-                SerialPort2.Write("100" + lblSenhaN.Text + "/")
-            End If
-            If lblSenhaN.Text.Length = 2 Then
-                SerialPort2.Write("10" + lblSenhaN.Text + "/")
-            End If
-            If lblSenhaN.Text.Length = 3 Then
-                SerialPort2.Write("1" + lblSenhaN.Text + "/")
-            End If
+        Dim senha As Integer
+
+        senha = 1000 + CInt(lblSenhaN.Text)
+        If (SerialPort2.IsOpen() = True) And (SerialPort1.IsOpen() = True) Then
+            Timer2.Enabled = True
+            valor = senha
+            milhar = valor \ 1000
+            centena = (valor - milhar * 1000) \ 100
+            dezena = ((valor - (milhar * 1000)) - (centena * 100)) \ 10
+            unidade = valor - (milhar * 1000) - (centena * 100) - (dezena * 10)
+
+            txtMensagem.Text = Trim(Str(senha)) + "/"
         End If
     End Sub
 
     Private Sub EvAtualizarSenhaP(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblSenhaP.TextChanged
+        Dim senha As Integer
+
+        senha = 2000 + CInt(lblSenhaP.Text)
         If SerialPort2.IsOpen() = True Then
-            If lblSenhaP.Text.Length = 1 Then
-                SerialPort2.Write("200" + lblSenhaP.Text + "/")
-            End If
-            If lblSenhaP.Text.Length = 2 Then
-                SerialPort2.Write("20" + lblSenhaP.Text + "/")
-            End If
-            If lblSenhaP.Text.Length = 3 Then
-                SerialPort2.Write("2" + lblSenhaP.Text + "/")
-            End If
+            Timer2.Enabled = True
+            valor = senha
+            milhar = valor \ 1000
+            centena = (valor - milhar * 1000) \ 100
+            dezena = ((valor - (milhar * 1000)) - (centena * 100)) \ 10
+            unidade = valor - (milhar * 1000) - (centena * 100) - (dezena * 10)
+
+            txtMensagem.Text = Trim(Str(senha)) + "/"
         End If
+    End Sub
+
+    Private Sub Timer2_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer2.Tick
+
+        SerialPort2.Write(Trim(Str(milhar)))
+        SerialPort1.Write(Trim(Str(milhar)))
+        Timer2.Enabled = False
+        Timer3.Enabled = True
+    End Sub
+
+    Private Sub Timer3_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer3.Tick
+
+        SerialPort2.Write(Trim(Str(centena)))
+        SerialPort1.Write(Trim(Str(centena)))
+        Timer3.Enabled = False
+        Timer4.Enabled = True
+    End Sub
+
+    Private Sub Timer4_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer4.Tick
+
+        SerialPort2.Write(Trim(Str(dezena)))
+        SerialPort1.Write(Trim(Str(dezena)))
+        Timer4.Enabled = False
+        Timer5.Enabled = True
+    End Sub
+
+    Private Sub Timer5_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer5.Tick
+
+        SerialPort2.Write(Trim(Str(unidade)))
+        SerialPort1.Write(Trim(Str(unidade)))
+        Timer5.Enabled = False
+        Timer6.Enabled = True
+    End Sub
+
+    Private Sub Timer6_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer6.Tick
+        SerialPort2.Write("/")
+        SerialPort1.Write("/")
+        Timer6.Enabled = False
     End Sub
 End Class

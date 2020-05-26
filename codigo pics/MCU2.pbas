@@ -22,9 +22,9 @@ USART_INIT(9600)
 portc = 0
 porta = 0
 
-PORTB.4=1
+PORTB.6=1
 
-valor = 0
+valor = 1000
 aux = 0
 
 executa:
@@ -57,13 +57,13 @@ exibe:
 
       ' acende e, g, c
       if mil = 1 then
-           portb.4 = 1
-           portb.6 = 0
+           portb.4 = 0
+           portb.6 = 1
       end if
       ' acende e, f, a, b, g
       if mil = 2 then
-          portb.4 = 0
-          portb.6 = 1
+          portb.4 = 1
+          portb.6 = 0
       end if
 
       PORTC = uni

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class frmControleSenha
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,7 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmControleSenha))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnDecrPriorit = New System.Windows.Forms.Button()
         Me.btnDecrNormal = New System.Windows.Forms.Button()
@@ -84,6 +84,11 @@ Partial Class Form1
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtMsgRecebida = New System.Windows.Forms.TextBox()
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer4 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer5 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer6 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -676,7 +681,22 @@ Partial Class Form1
         Me.txtMsgRecebida.Size = New System.Drawing.Size(215, 20)
         Me.txtMsgRecebida.TabIndex = 8
         '
-        'Form1
+        'Timer2
+        '
+        '
+        'Timer3
+        '
+        '
+        'Timer4
+        '
+        '
+        'Timer5
+        '
+        '
+        'Timer6
+        '
+        '
+        'frmControleSenha
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -693,8 +713,8 @@ Partial Class Form1
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.Name = "Form1"
-        Me.Text = "Controle de Senhas"
+        Me.Name = "frmControleSenha"
+        Me.Text = "Controle de Senha"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
@@ -767,5 +787,10 @@ Partial Class Form1
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents txtMsgRecebida As System.Windows.Forms.TextBox
+    Friend WithEvents Timer2 As System.Windows.Forms.Timer
+    Friend WithEvents Timer3 As System.Windows.Forms.Timer
+    Friend WithEvents Timer4 As System.Windows.Forms.Timer
+    Friend WithEvents Timer5 As System.Windows.Forms.Timer
+    Friend WithEvents Timer6 As System.Windows.Forms.Timer
 
 End Class

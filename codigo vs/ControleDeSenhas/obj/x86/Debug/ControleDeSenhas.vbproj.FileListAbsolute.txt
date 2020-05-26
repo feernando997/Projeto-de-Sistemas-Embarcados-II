@@ -13,7 +13,6 @@ C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sist
 C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\bin\Debug\ControleDeSenhas.exe
 C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\bin\Debug\ControleDeSenhas.pdb
 C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\bin\Debug\ControleDeSenhas.xml
-C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.Form1.resources
 C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.Resources.resources
 C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.vbproj.GenerateResource.Cache
 D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.exe
@@ -25,3 +24,4 @@ D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-S
 D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.Form1.resources
 D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.Resources.resources
 D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.vbproj.GenerateResource.Cache
+C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.frmControleSenha.resources

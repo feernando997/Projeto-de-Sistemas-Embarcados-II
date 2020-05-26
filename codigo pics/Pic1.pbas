@@ -3,7 +3,7 @@ program Pic1
 dim recebe, txt as string[6]
 dim b0, b1, b2, b3, b4, b5 as boolean
 dim incP, incN, priorit as integer
-dim uni, cen, dez, mil, valor, Norm, Pref as integer
+dim uni, cen, dez, mil, valor as integer
 dim valorN, valorP as integer
 
 'Controle de prioridade e envio
@@ -20,6 +20,12 @@ sub procedure envia
       Usart_Write_Text(txt)
       Usart_Write_Text("/")
     end if
+end sub
+
+sub procedure alerta
+      IntToStr(65, txt)
+      Usart_Write_Text(txt)
+      Usart_Write_Text("/")
 end sub
 
 main:
@@ -47,14 +53,14 @@ executa:
        if USART_Data_Ready() > 0 then
           Usart_Read_Text(recebe, "/")
           valor = StrToInt(recebe)
-          if (valor < 2000) and (valor >= 1000) then
-             priorit = 1
-             Norm = valor - 1000
-          end if
-          if (valor < 3000) and (valor >= 2000) then
-             priorit = 2
-             Pref = valor - 2000
-          end if
+          'if (valor < 2000) and (valor >= 1000) then
+           '  priorit = 1
+            ' Norm = valor - 1000
+          'end if
+          'if (valor < 3000) and (valor >= 2000) then
+           '  priorit = 2
+            ' Pref = valor - 2000
+          'end if
        end if
 
        'Incrementa
@@ -119,23 +125,19 @@ executa:
               b3 = false
            end if
         end if
-        
+
         'Emite o alerta
-        'if testbit(portA,4) = 1 then
-           'if b4 = false then
-              'b4 = true
-              'if portB.4 = 0 then
-              '   portB.4 = 1
-              'else
-              '   portB.4 = 0
-              'end if
-          'end if
-        'end if
-        'if testbit(portA,4) = 0 then
-        '   if b4 = true then
-        '      b4 = false
-        '   end if
-        'end if
+        if testbit(portA,4) = 1 then
+           if b4 = false then
+              b4 = true
+              alerta
+           end if
+        end if
+        if testbit(portA,4) = 0 then
+           if b4 = true then
+              b4 = false
+           end if
+        end if
 
        'Envia dados
         if testbit(portA,5) = 1 then
@@ -149,11 +151,11 @@ executa:
         end if
 
         'Controle de exibição
-        'if priorit = 1 then
-        '   valor = Norm
-        'else
-        '   valor = Pref
-        'end if
+        if priorit = 1 then
+           valor = incN + 1000
+        else
+           valor = incP + 2000
+        end if
           
         mil = valor div 1000
         cen = valor div 100 - (mil * 10)

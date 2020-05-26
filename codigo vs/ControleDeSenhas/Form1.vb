@@ -30,6 +30,7 @@ ErroAbertura:
     End Sub
 
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+
         Dim i As Integer
 
         'Recebimento do PIC 1
@@ -65,6 +66,20 @@ ErroAbertura:
     End Sub
 
     Private Sub btnRepetir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRepetir.Click
+
+        Dim serial2 As Boolean
+
+        'txtMensagem.Text = 4000
+        'valor = txtMensagem.Text * 1
+
+        'If serial2 = True Then
+        'txtMensagem.Clear()
+        'End If
+
+        'If serial2 = True Then
+        'txtMensagem.Text = txtMensagem.Text & Trim(Str(milhar))
+        'End If
+
 
     End Sub
 

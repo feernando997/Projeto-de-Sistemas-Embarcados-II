@@ -113,11 +113,11 @@ Partial Class frmControleSenha
         'btnDecrPriorit
         '
         Me.btnDecrPriorit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDecrPriorit.Location = New System.Drawing.Point(89, 48)
+        Me.btnDecrPriorit.Location = New System.Drawing.Point(107, 48)
         Me.btnDecrPriorit.Name = "btnDecrPriorit"
-        Me.btnDecrPriorit.Size = New System.Drawing.Size(123, 23)
+        Me.btnDecrPriorit.Size = New System.Drawing.Size(103, 23)
         Me.btnDecrPriorit.TabIndex = 6
-        Me.btnDecrPriorit.Text = "Decrementar prioritario"
+        Me.btnDecrPriorit.Text = "Decrementar P"
         Me.btnDecrPriorit.UseVisualStyleBackColor = True
         '
         'btnDecrNormal
@@ -125,15 +125,15 @@ Partial Class frmControleSenha
         Me.btnDecrNormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDecrNormal.Location = New System.Drawing.Point(6, 48)
         Me.btnDecrNormal.Name = "btnDecrNormal"
-        Me.btnDecrNormal.Size = New System.Drawing.Size(81, 23)
+        Me.btnDecrNormal.Size = New System.Drawing.Size(95, 23)
         Me.btnDecrNormal.TabIndex = 5
-        Me.btnDecrNormal.Text = "Decrementar"
+        Me.btnDecrNormal.Text = "Decrementar N"
         Me.btnDecrNormal.UseVisualStyleBackColor = True
         '
         'btnRepetir
         '
         Me.btnRepetir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRepetir.Location = New System.Drawing.Point(71, 77)
+        Me.btnRepetir.Location = New System.Drawing.Point(55, 85)
         Me.btnRepetir.Name = "btnRepetir"
         Me.btnRepetir.Size = New System.Drawing.Size(75, 23)
         Me.btnRepetir.TabIndex = 4
@@ -143,11 +143,11 @@ Partial Class frmControleSenha
         'btnIncPrioritario
         '
         Me.btnIncPrioritario.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnIncPrioritario.Location = New System.Drawing.Point(89, 19)
+        Me.btnIncPrioritario.Location = New System.Drawing.Point(107, 19)
         Me.btnIncPrioritario.Name = "btnIncPrioritario"
-        Me.btnIncPrioritario.Size = New System.Drawing.Size(123, 23)
+        Me.btnIncPrioritario.Size = New System.Drawing.Size(103, 23)
         Me.btnIncPrioritario.TabIndex = 1
-        Me.btnIncPrioritario.Text = "Incrementar prioritário"
+        Me.btnIncPrioritario.Text = "Incrementar P"
         Me.btnIncPrioritario.UseVisualStyleBackColor = True
         '
         'btnIncrementar
@@ -155,9 +155,9 @@ Partial Class frmControleSenha
         Me.btnIncrementar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnIncrementar.Location = New System.Drawing.Point(6, 19)
         Me.btnIncrementar.Name = "btnIncrementar"
-        Me.btnIncrementar.Size = New System.Drawing.Size(81, 23)
+        Me.btnIncrementar.Size = New System.Drawing.Size(95, 23)
         Me.btnIncrementar.TabIndex = 0
-        Me.btnIncrementar.Text = "Incrementar"
+        Me.btnIncrementar.Text = "Incrementar N"
         Me.btnIncrementar.UseVisualStyleBackColor = True
         '
         'GroupBox2
@@ -179,7 +179,7 @@ Partial Class frmControleSenha
         Me.btnResetAll.Name = "btnResetAll"
         Me.btnResetAll.Size = New System.Drawing.Size(101, 23)
         Me.btnResetAll.TabIndex = 2
-        Me.btnResetAll.Text = "Resetar tudo"
+        Me.btnResetAll.Text = "Reset Geral"
         Me.btnResetAll.UseVisualStyleBackColor = True
         '
         'btnResetPr
@@ -187,19 +187,19 @@ Partial Class frmControleSenha
         Me.btnResetPr.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnResetPr.Location = New System.Drawing.Point(149, 37)
         Me.btnResetPr.Name = "btnResetPr"
-        Me.btnResetPr.Size = New System.Drawing.Size(140, 23)
+        Me.btnResetPr.Size = New System.Drawing.Size(107, 23)
         Me.btnResetPr.TabIndex = 1
-        Me.btnResetPr.Text = "Resetar senha prioritária"
+        Me.btnResetPr.Text = "Resetar Prioritário"
         Me.btnResetPr.UseVisualStyleBackColor = True
         '
         'btnReset
         '
         Me.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnReset.Location = New System.Drawing.Point(6, 37)
+        Me.btnReset.Location = New System.Drawing.Point(33, 37)
         Me.btnReset.Name = "btnReset"
-        Me.btnReset.Size = New System.Drawing.Size(137, 23)
+        Me.btnReset.Size = New System.Drawing.Size(104, 23)
         Me.btnReset.TabIndex = 0
-        Me.btnReset.Text = "Resetar senha normal"
+        Me.btnReset.Text = "Resetar Normal"
         Me.btnReset.UseVisualStyleBackColor = True
         '
         'GroupBox3
@@ -212,7 +212,7 @@ Partial Class frmControleSenha
         Me.GroupBox3.Controls.Add(Me.Label1)
         Me.GroupBox3.Location = New System.Drawing.Point(238, 12)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(418, 219)
+        Me.GroupBox3.Size = New System.Drawing.Size(402, 219)
         Me.GroupBox3.TabIndex = 2
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Senhas"
@@ -551,7 +551,7 @@ Partial Class frmControleSenha
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(50, 13)
         Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Prioritario"
+        Me.Label4.Text = "Prioritário"
         '
         'Label3
         '
@@ -700,7 +700,7 @@ Partial Class frmControleSenha
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(664, 430)
+        Me.ClientSize = New System.Drawing.Size(650, 430)
         Me.Controls.Add(Me.txtMsgRecebida)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label5)
@@ -714,7 +714,8 @@ Partial Class frmControleSenha
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "frmControleSenha"
-        Me.Text = "Controle de Senha"
+        Me.ShowIcon = False
+        Me.Text = "Controle Central"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)

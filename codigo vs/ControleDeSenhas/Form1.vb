@@ -1,5 +1,10 @@
 ﻿Public Class frmControleSenha
 
+    Dim valor As Integer
+    Dim milhar As Integer
+    Dim centena As Integer
+    Dim dezena As Integer
+    Dim unidade As Integer
 
     Private Sub btnIncrementar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnIncrementar.Click
         Dim valor As Integer
@@ -264,7 +269,6 @@ ErroAbertura:
 
         valor = CInt(lblAtualizaSenhaN.Text)
 
-
         If valor <= 0 Then
             btnDecrNormal.Enabled = False
         Else
@@ -305,11 +309,6 @@ ErroAbertura:
         lblAtualizaSenhaP.Text = lblSenhaP.Text
     End Sub
 
-    Dim valor As Integer
-    Dim milhar As Integer
-    Dim centena As Integer
-    Dim dezena As Integer
-    Dim unidade As Integer
     Private Sub EvAtualizaSenhaN(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblSenhaN.TextChanged
         Dim senha As Integer
 
@@ -375,6 +374,7 @@ ErroAbertura:
     End Sub
 
     Private Sub Timer6_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer6.Tick
+
         SerialPort2.Write("/")
         SerialPort1.Write("/")
         Timer6.Enabled = False

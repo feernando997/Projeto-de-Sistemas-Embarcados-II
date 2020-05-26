@@ -89,6 +89,7 @@ Partial Class frmControleSenha
         Me.Timer4 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer5 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer6 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer7 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -792,5 +793,6 @@ Partial Class frmControleSenha
     Friend WithEvents Timer4 As System.Windows.Forms.Timer
     Friend WithEvents Timer5 As System.Windows.Forms.Timer
     Friend WithEvents Timer6 As System.Windows.Forms.Timer
+    Friend WithEvents Timer7 As System.Windows.Forms.Timer
 
 End Class

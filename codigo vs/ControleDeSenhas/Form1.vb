@@ -313,7 +313,8 @@ ErroAbertura:
         Dim senha As Integer
 
         senha = 1000 + CInt(lblSenhaN.Text)
-        If (SerialPort2.IsOpen() = True) And (SerialPort1.IsOpen() = True) Then
+
+        If (SerialPort2.IsOpen() = True) Then
             Timer2.Enabled = True
             valor = senha
             milhar = valor \ 1000
@@ -323,12 +324,26 @@ ErroAbertura:
 
             txtMensagem.Text = Trim(Str(senha)) + "/"
         End If
+
+        If (SerialPort1.IsOpen() = True) Then
+            Timer2.Enabled = True
+            valor = senha
+
+            milhar = valor \ 1000
+            centena = (valor - milhar * 1000) \ 100
+            dezena = ((valor - (milhar * 1000)) - (centena * 100)) \ 10
+            unidade = valor - (milhar * 1000) - (centena * 100) - (dezena * 10)
+
+            txtMsgRecebida.Text = Trim(Str(senha)) + "/"
+        End If
+
     End Sub
 
     Private Sub EvAtualizarSenhaP(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblSenhaP.TextChanged
         Dim senha As Integer
 
         senha = 2000 + CInt(lblSenhaP.Text)
+
         If SerialPort2.IsOpen() = True Then
             Timer2.Enabled = True
             valor = senha
@@ -339,6 +354,19 @@ ErroAbertura:
 
             txtMensagem.Text = Trim(Str(senha)) + "/"
         End If
+
+        If SerialPort1.IsOpen() = True Then
+            Timer2.Enabled = True
+            valor = senha
+
+            milhar = valor \ 1000
+            centena = (valor - milhar * 1000) \ 100
+            dezena = ((valor - (milhar * 1000)) - (centena * 100)) \ 10
+            unidade = valor - (milhar * 1000) - (centena * 100) - (dezena * 10)
+
+            txtMsgRecebida.Text = Trim(Str(senha)) + "/"
+        End If
+
     End Sub
 
     Private Sub Timer2_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer2.Tick

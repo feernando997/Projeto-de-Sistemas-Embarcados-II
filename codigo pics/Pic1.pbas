@@ -3,7 +3,7 @@ program Pic1
 dim recebe, txt as string[6]
 dim b0, b1, b2, b3, b4, b5 as boolean
 dim incP, incN, priorit as integer
-dim uni, cen, dez, mil, valor as integer
+dim uni, cen, dez, mil, valor, Norm, Pref as integer
 dim valorN, valorP as integer
 
 'Controle de prioridade e envio
@@ -49,11 +49,11 @@ executa:
           valor = StrToInt(recebe)
           if (valor < 2000) and (valor >= 1000) then
              priorit = 1
-             valor = valor - 2000
+             Norm = valor - 1000
           end if
           if (valor < 3000) and (valor >= 2000) then
              priorit = 2
-             valor = valor - 1000
+             Pref = valor - 2000
           end if
        end if
 
@@ -149,26 +149,25 @@ executa:
         end if
 
         'Controle de exibição
-        if priorit = 1 then
-           valor = incN + 1000
-           
-        else
-           valor = incP + 2000
-        end if
-        
+        'if priorit = 1 then
+        '   valor = Norm
+        'else
+        '   valor = Pref
+        'end if
+          
         mil = valor div 1000
         cen = valor div 100 - (mil * 10)
         dez = valor div 10 - (cen * 10) - (mil * 100)
         uni = valor - (dez * 10) - (cen * 100) - (mil * 1000)
 
         PORTC = uni + 16
-        delay_ms(3)
+        delay_ms(5)
         PORTC = dez + 32
-        delay_ms(3)
+        delay_ms(5)
         PORTC = cen + 64
-        delay_ms(3)
+        delay_ms(5)
         PORTC = mil + 128
-        delay_ms(3)
+        delay_ms(5)
 
         goto executa
 end.

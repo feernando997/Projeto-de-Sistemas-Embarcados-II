@@ -21,7 +21,7 @@ D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-S
 D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\bin\Debug\ControleDeSenhas.exe
 D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\bin\Debug\ControleDeSenhas.pdb
 D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\bin\Debug\ControleDeSenhas.xml
-D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.Form1.resources
 D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.Resources.resources
 D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.vbproj.GenerateResource.Cache
 C:\Users\pedro\OneDrive\faculdade\9_Semestre\Sistemas-embarcados\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.frmControleSenha.resources
+D:\Faculdade\9ºTermo\Projeto de Sistemas Embarcados\Trabalho Final\Projeto-de-Sistemas-Embarcados-II\codigo vs\ControleDeSenhas\obj\x86\Debug\ControleDeSenhas.frmControleSenha.resources

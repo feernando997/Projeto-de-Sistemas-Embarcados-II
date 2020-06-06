@@ -3,10 +3,10 @@ program Pic1
 dim recebe, txt as string[6]
 dim b0, b1, b2, b3, b4, b5 as boolean
 dim incP, incN, priorit as integer
-dim uni, cen, dez, mil, valor, i as integer
+dim uni, cen, dez, mil, valor as integer
 dim valorN, valorP as integer
 
-'Controle de prioridade
+'Controle de prioridade e envio
 sub procedure envia
     if priorit = 1 then
       valorN = 1000 + incN
@@ -20,6 +20,12 @@ sub procedure envia
       Usart_Write_Text(txt)
       Usart_Write_Text("/")
     end if
+end sub
+
+sub procedure alerta
+      IntToStr(65, txt)
+      Usart_Write_Text(txt)
+      Usart_Write_Text("/")
 end sub
 
 main:
@@ -47,6 +53,14 @@ executa:
        if USART_Data_Ready() > 0 then
           Usart_Read_Text(recebe, "/")
           valor = StrToInt(recebe)
+          'if (valor < 2000) and (valor >= 1000) then
+           '  priorit = 1
+            ' Norm = valor - 1000
+          'end if
+          'if (valor < 3000) and (valor >= 2000) then
+           '  priorit = 2
+            ' Pref = valor - 2000
+          'end if
        end if
 
        'Incrementa
@@ -55,12 +69,20 @@ executa:
               b0 = true
               if priorit = 1 then
                  incN = incN + 1
-                 if incN > 999 then incN = 999 end if
-                 if incN < 0   then incN = 0   end if
+                 if incN > 999 then
+                    incN = 999
+                 end if
+                 if incN < 0 then
+                    incN = 0
+                 end if
               else
                  incP = incP + 1
-                 if incP > 999 then incP = 999 end if
-                 if incP < 0   then incP = 0   end if
+                 if incP > 999 then
+                    incP = 999
+                 end if
+                 if incP < 0 then
+                    incP = 0
+                 end if
               end if
            end if
         end if
@@ -86,6 +108,7 @@ executa:
               b1 = false
            end if
         end if
+        
         'Muda prioridade
         if testbit(portA,3) = 1 then
            if b3 = false then
@@ -102,16 +125,12 @@ executa:
               b3 = false
            end if
         end if
-        
+
         'Emite o alerta
         if testbit(portA,4) = 1 then
            if b4 = false then
               b4 = true
-              if portB.4 = 0 then
-                 portB.4 = 1
-              else
-                 portB.4 = 0
-              end if
+              alerta
            end if
         end if
         if testbit(portA,4) = 0 then
@@ -133,24 +152,24 @@ executa:
 
         'Controle de exibição
         if priorit = 1 then
-           valor = incN
+           valor = incN + 1000
         else
-           valor = incP
+           valor = incP + 2000
         end if
-        
+          
         mil = valor div 1000
         cen = valor div 100 - (mil * 10)
         dez = valor div 10 - (cen * 10) - (mil * 100)
         uni = valor - (dez * 10) - (cen * 100) - (mil * 1000)
 
         PORTC = uni + 16
-        delay_ms(3)
+        delay_ms(5)
         PORTC = dez + 32
-        delay_ms(3)
+        delay_ms(5)
         PORTC = cen + 64
-        delay_ms(3)
+        delay_ms(5)
         PORTC = mil + 128
-        delay_ms(3)
+        delay_ms(5)
 
         goto executa
 end.

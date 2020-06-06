@@ -1,5 +1,10 @@
 ﻿Public Class frmControleSenha
 
+    Dim valor As Integer
+    Dim milhar As Integer
+    Dim centena As Integer
+    Dim dezena As Integer
+    Dim unidade As Integer
 
     Private Sub btnIncrementar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnIncrementar.Click
         Dim valor As Integer
@@ -25,6 +30,7 @@ ErroAbertura:
     End Sub
 
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+
         Dim i As Integer
 
         'Recebimento do PIC 1
@@ -60,6 +66,20 @@ ErroAbertura:
     End Sub
 
     Private Sub btnRepetir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRepetir.Click
+
+        Dim serial2 As Boolean
+
+        'txtMensagem.Text = 4000
+        'valor = txtMensagem.Text * 1
+
+        'If serial2 = True Then
+        'txtMensagem.Clear()
+        'End If
+
+        'If serial2 = True Then
+        'txtMensagem.Text = txtMensagem.Text & Trim(Str(milhar))
+        'End If
+
 
     End Sub
 
@@ -264,7 +284,6 @@ ErroAbertura:
 
         valor = CInt(lblAtualizaSenhaN.Text)
 
-
         If valor <= 0 Then
             btnDecrNormal.Enabled = False
         Else
@@ -305,16 +324,12 @@ ErroAbertura:
         lblAtualizaSenhaP.Text = lblSenhaP.Text
     End Sub
 
-    Dim valor As Integer
-    Dim milhar As Integer
-    Dim centena As Integer
-    Dim dezena As Integer
-    Dim unidade As Integer
     Private Sub EvAtualizaSenhaN(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblSenhaN.TextChanged
         Dim senha As Integer
 
         senha = 1000 + CInt(lblSenhaN.Text)
-        If (SerialPort2.IsOpen() = True) And (SerialPort1.IsOpen() = True) Then
+
+        If (SerialPort2.IsOpen() = True) Then
             Timer2.Enabled = True
             valor = senha
             milhar = valor \ 1000
@@ -324,12 +339,26 @@ ErroAbertura:
 
             txtMensagem.Text = Trim(Str(senha)) + "/"
         End If
+
+        If (SerialPort1.IsOpen() = True) Then
+            Timer2.Enabled = True
+            valor = senha
+
+            milhar = valor \ 1000
+            centena = (valor - milhar * 1000) \ 100
+            dezena = ((valor - (milhar * 1000)) - (centena * 100)) \ 10
+            unidade = valor - (milhar * 1000) - (centena * 100) - (dezena * 10)
+
+            txtMsgRecebida.Text = Trim(Str(senha)) + "/"
+        End If
+
     End Sub
 
     Private Sub EvAtualizarSenhaP(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblSenhaP.TextChanged
         Dim senha As Integer
 
         senha = 2000 + CInt(lblSenhaP.Text)
+
         If SerialPort2.IsOpen() = True Then
             Timer2.Enabled = True
             valor = senha
@@ -340,6 +369,19 @@ ErroAbertura:
 
             txtMensagem.Text = Trim(Str(senha)) + "/"
         End If
+
+        If SerialPort1.IsOpen() = True Then
+            Timer2.Enabled = True
+            valor = senha
+
+            milhar = valor \ 1000
+            centena = (valor - milhar * 1000) \ 100
+            dezena = ((valor - (milhar * 1000)) - (centena * 100)) \ 10
+            unidade = valor - (milhar * 1000) - (centena * 100) - (dezena * 10)
+
+            txtMsgRecebida.Text = Trim(Str(senha)) + "/"
+        End If
+
     End Sub
 
     Private Sub Timer2_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer2.Tick
@@ -375,6 +417,7 @@ ErroAbertura:
     End Sub
 
     Private Sub Timer6_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer6.Tick
+
         SerialPort2.Write("/")
         SerialPort1.Write("/")
         Timer6.Enabled = False

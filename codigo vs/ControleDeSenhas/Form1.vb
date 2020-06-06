@@ -48,9 +48,11 @@ ErroAbertura:
                     lblSenhaP.Text = i
                     lblAtualizaSenhaP.Text = i
                 End If
+                If Mid(txtMsgRecebida.Text, 1, 1) = "R" Then
+                    Timer7.Enabled = True
+                End If
             End If
         End If
-
     End Sub
 
     Private Sub btnIncPrioritario_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnIncPrioritario.Click
@@ -66,21 +68,7 @@ ErroAbertura:
     End Sub
 
     Private Sub btnRepetir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRepetir.Click
-
-        Dim serial2 As Boolean
-
-        'txtMensagem.Text = 4000
-        'valor = txtMensagem.Text * 1
-
-        'If serial2 = True Then
-        'txtMensagem.Clear()
-        'End If
-
-        'If serial2 = True Then
-        'txtMensagem.Text = txtMensagem.Text & Trim(Str(milhar))
-        'End If
-
-
+        Timer7.Enabled = True
     End Sub
 
     Private Sub btnReset_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReset.Click
@@ -421,5 +409,12 @@ ErroAbertura:
         SerialPort2.Write("/")
         SerialPort1.Write("/")
         Timer6.Enabled = False
+    End Sub
+
+    Private Sub Timer7_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer7.Tick
+        SerialPort2.Write("R")
+        txtMensagem.Text = "R/"
+        Timer6.Enabled = True
+        Timer7.Enabled = False
     End Sub
 End Class

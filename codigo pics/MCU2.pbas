@@ -9,6 +9,7 @@ dim cent  as integer
 dim mil  as integer
 dim valor as integer
 dim bip   as boolean
+dim conta as integer
 
 inicio:
 
@@ -25,14 +26,23 @@ porta = 0
 
 PORTB.6=1
 
+bip = false
 valor = 1000
 aux = 0
+conta = 0
 
 executa:
 
       if Usart_Data_Ready() > 0 then
         Usart_Read_Text(recebe,"/")
-        aux = StrToInt(recebe)
+        if strcmp(recebe, "R") = 0 then
+           porta.5 = 1
+           bip = true
+        else
+            aux = StrToInt(recebe)
+            porta.5 = 1
+            bip = true
+        end if
 
         if (aux >= 1000) and (aux < 3000) then
            valor = aux
@@ -77,6 +87,15 @@ exibe:
       PORTC = cent
       PORTC.4=0 PORTC.5=0 PORTC.6=1
       delay_ms(5)
+      
+      if bip = true then
+         inc(conta)
+         if conta >= 20 then
+            bip = false
+            porta.5 = 0
+            conta = 0
+         end if
+      end if
       
       return
 

@@ -12,9 +12,6 @@ main
 	alerta
 		Usart_Write_Text
 			USART_Write
-		IntToStr
-			Div_16x16_S
-				Div_16x16_S_L
 	StrToInt
 		Div_32x32_S
 			COMFREM
